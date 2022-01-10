@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- links CSS -->
+  <link rel="stylesheet" href="../../bootstrap/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/cadastroVac.css">
+
+  <!-- links JS -->
+  <!-- progress bar -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script type="text/javascript" src="js/cadastroVac.js"></script>
+
+
+
+
+  <script>
+    //variável arrayTextos guarda tags que podem conter textos como conteúdo
+    var arrayTextos = ['p', 'a', 'h1', 'h2', 'h3', 'h4', 'input', 'placeholder', 'li', 'figcaption', 'span', 'ul',
+      'select', 'option', 'label'
+    ];
+    var fonteAumentada = 0;
+    var fonteDiminuida = 0;
+    var tamFonte = 0;
+
+    // widget de Libras
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+
+    $(document).ready(function () {
+
+      window.addEventListener('scroll', function () {
+        const header = document.querySelector('header');
+        const windowPosition = window.scrollY > 0;
+        header.classList.toggle('scrolling-active', windowPosition);
+      });
+
+
+      $('#btn-AumentaLetra').click(function () {
+        for (tag of arrayTextos) {
+          tamFonte = parseFloat($(tag).css('fontSize'));
+          if (tamFonte < 19 && tamFonte >= 16) {
+            fonteAumentada = tamFonte * 1.10;
+            $(tag).css({
+              fontSize: fonteAumentada
+            });
+          } else if (tamFonte >= 19) {
+            fonteAumentada = tamFonte * 1.03;
+            $(tag).css({
+              fontSize: fonteAumentada
+            });
+          } else if (tamFonte < 16) {
+            fonteAumentada = tamFonte * 1.15;
+            $(tag).css({
+              fontSize: fonteAumentada
+            });
+          }
+        }
+      });
+
+      $('#btn-DiminuiLetra').click(function () {
+        for (tag of arrayTextos) {
+          tamFonte = parseFloat($(tag).css('fontSize'));
+          if (tamFonte < 20 && tamFonte >= 16) {
+            fonteDiminuida = tamFonte * 0.90;
+            $(tag).css({
+              fontSize: fonteDiminuida
+            });
+          } else if (tamFonte > 20) {
+            fonteDiminuida = tamFonte * 0.95;
+            $(tag).css({
+              fontSize: fonteDiminuida
+            });
+          } else if (tamFonte < 16) {
+            fonteDiminuida = tamFonte * 1;
+            $(tag).css({
+              fontSize: fonteDiminuida
+            });
+          }
+        }
+      });
+    });
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="../../bootstrap/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+  <script src="../../bootstrap/bootstrap-4.6.0-dist/js/bootstrap.bundle.js"></script>
+
+  <title>Fomulário de Vacinação</title>
+</head>
+
+<body>
+  <header id='pageHeader' class='header-nav-bar'>
+    <div class='div-container-header'>
+      <nav class='nav'>
+        <a href='index.html' class='logo1'><img src='img/logo-SP-branco.svg' id='imglogo' alt='São Paulo logo'></a>
+        <!-- menu normal -->
+        <ul class='nav-list'>
+          <li>
+            <a href='index.html' class='nav-link'>Home</a>
+          </li>
+          <li>
+            <a href='vacinas.html' class='nav-link'>Vacinas</a>
+          </li>
+          <li>
+            <a href='#' class='nav-link'>Cadastro para Vacinação</a>
+          </li>
+          <li>
+            <a href='fases.html' class='nav-link'>Retomada da Economia</a>
+          </li>
+          <li>
+            <a href='protocolos.html' class='nav-link'>Protocolos</a>
+          </li>
+          <!-- <li>
+                    <a href='fases.html' class='nav-link'>Quem Somos</a>
+                </li> -->
+        </ul>
+        <!-- search box -->
+        <div class='search-box'>
+          <button class='btn-search'><i class='fas fa-search'></i></button>
+          <input type='text' class='input-search' placeholder='Pesquisar...'>
+        </div>
+        <!-- menu hamburguer -->
+        <div class='mobile-menu'>
+          <div class='line1'></div>
+          <div class='line2'></div>
+          <div class='line3'></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div id="progressBar">
+      <div id="progress">0%</div>
+    </div>
+    <form id="formulario" method="POST" name="formulario" class="">
+      <fieldset id="field1">
+        <h2>Informações Pessoais</h2>
+        <h3>Formulário elaborado para coletar dados para Vacinação para COVID-19</h3>
+        <!--  Dados  -->
+        <input type="text" id="name" placeholder="Nome Completo" class="ver1" title="Digite seu nome COMPLETO">
+        <input type="text" id="cpf" placeholder="CPF: 111.222.333-44" title="Informe seu CPF (somente números)">
+        <input type="date" id="nascimento" maxlength="8" placeholder="Data de Nascimento: dd/mm/aaa"
+          title="Informe sua data de nascimento (somente números)">
+
+        <input type="number" id="sus" placeholder="Número Do Cartão SUS">
+        <input type="number" id="peso" placeholder="Peso"
+          title="Informe seu peso em kg e use ponto no lugar da vírgula. Ex: 67.4">
+        <input type="number" id="altura" placeholder="Altura"
+          title="Informe sua altura em metros e use ponto no lugar da vírgula. Ex: 1.72">
+
+        <select class="ver1" id="comorbidade" onblur="validarComorbidade(this)">
+          <option value="" disabled selected hidden>Comorbidade</option>
+          <option value="diabetes">Diabetes</option>
+          <option value="cardio">Doenças Cardiovasculares</option>
+          <option value="neuro">Doenças Neurológicas</option>
+          <option value="renal">Doença Renal Crônica</option>
+          <option value="imuno">Imunocomprometidos</option>
+          <option value="falciforme">Doença Falciforme</option>
+          <option value="talassemia">Talassemia Maior</option>
+          <option value="obesidade">Obesidade</option>
+          <option value="down">Síndrome de down</option>
+          <option value="null">Nenhuma</option>
+        </select>
+
+        <select class="item1" id="profissao" onblur="validarProfissao(this)">
+          <option value="" disabled selected hidden>Profissão</option>
+          <option value="saude">Profissional na área da Saúde</option>
+          <option value="seguranca">Segurança Pública</option>
+          <option value="professores">Professores</option>
+          <option value="outros">Outros</option>
+        </select>
+
+        <select class="item1" id="sexo" onblur="validarSexo(this)">
+          <option value="" disabled selected hidden>Sexo</option>
+          <option value="feminino">Feminino</option>
+          <option value="masculino">Masculino</option>
+          <option value="Não informado">Não informado</option>
+        </select>
+        <select class="item1" id="gestante" onblur="validaGestante(this) ">
+          <option value=" " disabled selected hidden>Gestante</option>
+          <option value="sim">Sim</option>
+          <option value="nao">Não</option>
+        </select>
+
+        <select class="item1" id="etnia" onblur="validarEtnia(this)">
+          <option value=" " disabled selected hidden>Etnia</option>
+          <option value="branca">Branca</option>
+          <option value="preta">Preta</option>
+          <option value="amarela">Amarela</option>
+          <option value="parda">Parda</option>
+          <option value="indigena">Indígena</option>
+          <option value="naoInformado">Não Informado</option>
+        </select>
+
+        <h3>Marque quais vacinas possui no Cartao de Vacinas</h3>
+        <div id="vacinas" class"btn-group" role="group" aria-label="Basic checkbox toggle button group">
+          <div class="vacina-div">
+            <div>
+              <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btncheck1">Hepatite B</label>
+
+            </div>
+
+            <div>
+              <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btncheck2">Pneumocócia</label>
+            </div>
+
+            <div>
+              <input type="checkbox" class="vac1" class="check">
+              <label for="vac1">Rotavírus</label>
+            </div>
+          </div>
+
+          <div class="vacina-div">
+            <div>
+              <input type="checkbox" class="vac1" class="check">
+              <label for="vac1">Meningocócica C</label>
+            </div>
+
+            <div>
+              <input type="checkbox" class="vac1" class="check">
+              <label for="vac1">Febre Amarela</label>
+            </div>
+
+            <div>
+              <input type="checkbox" class="vac1" class="check">
+              <label for="vac1">Hepatite A</label>
+            </div>
+          </div>
+
+          <div class="vacina-div">
+            <div>
+              <input type="checkbox" class="vac1" class="check">
+              <label for="vac1">Tríplice Viral</label>
+            </div>
+
+            <div>
+              <input type="checkbox" class="vac1" class="check">
+              <label for="vac1">Tetra Viral</label>
+            </div>
+
+            <div>
+              <input type="checkbox" class="vac1" class="check">
+              <label for="vac1">HPV</label>
+            </div>
+
+            <div>
+              <input type="checkbox" class="vac1" class="check">
+              <label for="vac1">Gripe</label>
+            </div>
+          </div>
+        </div>
+
+        <input type="button" name="next1" class="next1 action btn btn-warning" value="Próximo ">
+
+      </fieldset>
+
+      <fieldset id="field2">
+        <h2>Estado de Vacinação</h2>
+        <input type="email" name="email" placeholder="E-mail">
+        <input type="text" name="celular" placeholder="Telefone Celular">
+        <input type="text" name="telefone" placeholder="Telefone (Alternativo)">
+        <input type="button" name="prev" class="prev2 action" value="Anterior">
+        <input type="button" name="next2" class="next2 action" value="Próximo">
+      </fieldset>
+
+      <fieldset id="field3">
+        <h2>Dados para Confirmação</h2>
+        <div id="contemplado">
+          <p> De acordo com os dados preenchidos,<strong> Você ESTÁ no grupo Prioritário para a fase de
+              vacinação.</strong> Em breve entraremos em contato</p>
+        </div>
+        <div id="naocontemplado">
+          <p>De acordo com os dados preenchidos,<strong> você <u>NÃO</u> faz parte do Grupo Prioritário.</strong>
+            Aguarde pelas próximas fases de vacinação</p>
+        </div>
+        <!-- DEVE CONTER TODOS OS DADOS PARA CONFIRMACAO -->
+        <input type="button" name="prev" class="prev3 action" value="Anterior">
+        <input type="button" name="send" class="send action" value="Enviar">
+        <!-- APOS CLICAR EM ENVIAR, MOSTRAR A FASE DE VACINAÇAO -->
+      </fieldset>
+    </form>
+  </main>
+
+  <aside id="acessibilidade">
+    <!-- barra lateral com 3 ícones/botões: A+, A- e Libras -->
+    <div id="aside-tamanhoFonte">
+      <!-- div com botões para aumentar e diminuir tamanho da fonte -->
+      <button class="btn-AlteraTamFonte" id="btn-AumentaLetra">A+</button>
+      <!-- botão para aumentar tamanho da fonte -->
+
+      <button class="btn-AlteraTamFonte" id="btn-DiminuiLetra">A-</button>
+      <!-- botão para diminuir tamanho da fonte -->
+    </div>
+
+    <div vw class="enabled">
+      <!-- div com botão para habilitar Libras -->
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+  </aside>
+
+  <footer>
+    <section>
+      <section>
+        <nav>
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="#vacinas-inicio">Vacinas</a></li>
+            <li><a href="">Ocupação Leitos</a></li>
+            <li><a href="">Quem Somos</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <section class="icones-textos">
+        <span>
+          <a href="https://goo.gl/maps/PjV6FDrgZFZgF8cf7" target="_blank">
+            <img id="maps" class="logo-redes-sociais" src="img/logo-maps.png"
+              alt="ícone de pin representando Google Maps" title="clique aqui para abrir o Google Maps">
+          </a>
+        </span>
+        <p id="endereco">
+          Secretaria de Saúde do Estado de São Paulo<br>
+          Av Dr Enéas Carvalho de Aguiar, 188 - São Paulo<br>
+          CEP: 05403-000<br>
+          Fone(11)3066 8000
+        </p>
+      </section>
+
+      <section>
+        <nav>
+          <ul>
+            <li class="icones-textos">
+              <a href="#">
+                <img class="logo-redes-sociais" src="img/logo-face.png" alt="logo do Facebook"
+                  title="ícones feitos por Freepik from www.flaticon.com">
+              </a>
+              <a href="#" title="clique aqui para visitar nossa página no Facebook">Facebook</a>
+
+            </li>
+            <li class="icones-textos">
+              <a href="#">
+                <img class="logo-redes-sociais" src="img/logo-insta.png" alt="logo do Instagram"
+                  title="ícones feitos por Freepik from www.flaticon.com">
+              </a>
+              <a href="#" title="clique aqui para visitar nosso perfil no Instagram">Instagram</a></li>
+          </ul>
+        </nav>
+      </section>
+    </section>
+    <!-- <div>
+          <p id="date">Data</p>
+      </div> -->
+
+  </footer>
+
+</body>
+
+</html>

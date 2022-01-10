@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="css/style-azul.css"> -->
+        <!-- <link href="https://cdn.jsdelivr.net/foundation/5.5.0/css/foundation.css" rel="stylesheet" /> -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
+        <link href="https://kenwheeler.github.io/slick/slick/slick-theme.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;0,700;1,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/navbar.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+        <script src='./js/index.js'></script>
+        <script src="./js/bxslider.js"></script>
+        <script src="js/script.js"></script>
+        <script src="./js/script-carousel.js"></script>
+        <script src="https://kit.fontawesome.com/a7d1e099f6.js" crossorigin="anonymous"></script>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script id="ga-injection">
+            var n = new Date();
+            var y = n.getFullYear();
+            var m = n.getMonth() + 1;
+            var d = n.getDate();
+            var vhora = n.getHours();
+            var vminuto = n.getMinutes();
+            var vsegundo = n.getSeconds();
+            document.getElementById("date").innerHTML = d + "/" + m + "/" + y + "   " + "Hora:" + " " + vhora + ":" + vminuto + ":" + vsegundo + "(Horário de Brasília)";
+        </script>
+       
+        
+        <script>
+            //variável arrayTextos guarda tags que podem conter textos como conteúdo
+            var arrayTextos = ['p', 'a', 'h1', 'h2', 'h3', 'h4', 'input', 'placeholder', 'li', 'figcaption', 'span', 'ul'];
+            var fonteAumentada = 0;
+            var fonteDiminuida = 0;
+            var tamFonte = 0;
+
+            // widget de Libras
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+            $(document).ready(function(){
+                $('#btn-AumentaLetra').click(function() {
+                for (tag of arrayTextos) {
+                    tamFonte = parseFloat($(tag).css('fontSize'));
+                    if (tamFonte < 19 && tamFonte >= 16) {
+                        fonteAumentada = tamFonte * 1.10;
+                        $(tag).css({
+                            fontSize: fonteAumentada
+                        });
+                    } else if (tamFonte >= 19) {
+                        fonteAumentada = tamFonte * 1.03;
+                        $(tag).css({
+                            fontSize: fonteAumentada
+                        });
+                    } else if (tamFonte < 16) {
+                        fonteAumentada = tamFonte * 1.15;
+                        $(tag).css({
+                            fontSize: fonteAumentada
+                        });
+                    }
+                }
+            });
+
+            $('#btn-DiminuiLetra').click(function() {
+                for (tag of arrayTextos) {
+                    tamFonte = parseFloat($(tag).css('fontSize'));
+                    if (tamFonte < 20 && tamFonte >= 16) {
+                        fonteDiminuida = tamFonte * 0.90;
+                        $(tag).css({
+                            fontSize: fonteDiminuida
+                        });
+                    } else if (tamFonte > 20) {
+                        fonteDiminuida = tamFonte * 0.95;
+                        $(tag).css({
+                            fontSize: fonteDiminuida
+                        });
+                    } else if (tamFonte < 16) {
+                        fonteDiminuida = tamFonte * 1;
+                        $(tag).css({
+                            fontSize: fonteDiminuida
+                        });
+                    }
+                }
+            });
+            })
+            
+        </script>
+        
+        <title>São Paulo - Governo do Estado</title>
+
+    </head>
+
+    <body id="principal">
+        <header id='pageHeader' class='header-nav-bar'>
+            <div class='div-container-header'>
+                <nav class='nav'>
+                    <a href='index.html' class='logo1'><img src='img/logo-SP-branco.svg' id='imglogo' alt='São Paulo logo'></a>
+                    <!-- menu normal -->
+                    <ul class='nav-list'>
+                        <li>
+                            <a href='#' class='nav-link'>Home</a>
+                        </li>
+                        <li>
+                            <a href='vacinas.html' class='nav-link'>Vacinas</a>
+                        </li>
+                        <li>
+                            <a href='cadastroVac.html' class='nav-link'>Cadastro para Vacinação</a>
+                        </li>
+                        <li>
+                            <a href='fases.html' class='nav-link'>Retomada da Economia</a>
+                        </li>
+                        <li>
+                            <a href='protocolos.html' class='nav-link'>Protocolos</a>
+                        </li>
+                        <!-- <li>
+                            <a href='fases.html' class='nav-link'>Quem Somos</a>
+                        </li> -->
+                    </ul>
+                    <!-- search box -->
+                    <div class='search-box'>
+                        <button class='btn-search'><i class='fas fa-search'></i></button>
+                        <input type='text' class='input-search' placeholder='Pesquisar...'>
+                    </div>
+
+                </nav>
+            </div>
+        </header>
+        <div class="container-titulos">
+            <h1 class="h1-hero">Governo de São Paulo</h1>
+            <h2 class="h2-hero">no combate à pandemia</h2>
+            <!-- <p id="date">Data</p> -->
+        </div>
+        <video class='hero' autoplay muted loop src='img/coronavirus.mp4'></video>
+        <!-- VIDEO CREDITS:  http://www.robovideo.sk e-mail: info@robovideo.sk Thanks! -->
+        <main class="main_content container">
+            <h1 id="titulo-informativos">Informativos</h1>
+            <section class="informativos">
+                <div>
+                    <img class="informe-img" typeof="foaf:Image" src="img/lidando_com_o_estresse_durante_a_pandemia_quadrado.jpg" title="Como lidar com o estresse na quarentena" />
+                </div>
+                <div>
+                    <img class="informe-img" typeof="foaf:Image" src="img/fiobrasilia6.jpg" title="Entre em contato com amigos e família" />
+                </div>
+                <div> 
+                    <img class="informe-img" typeof="foaf:Image" src="img/fiobrasilia5.jpg" title="Bebidas e drogas" />
+                </div>
+                <div> 
+                    <img class="informe-img" typeof="foaf:Image" src="img/fiobrasilia4.jpg" title="Consumo de notícias" />
+                </div>
+            </section>
+            
+            <section class="container">
+
+                <div class="content">
+
+                    <h1 class="section_title">GALERIA</h1>
+
+                    <div class="box-artigo">
+
+                        <!--Carrossel começa-->
+                        <div class="bxCarrosel">
+
+                            <article class="blocoArtigo">
+
+                                <div class="mascara">
+                                    <img class="imagem-carrossel" src="img/profissional-saude.jpg" title="Profissional de saúde">
+                                </div>
+
+                                <div class="desc">
+
+                                    <time datetime="22/08/2021">22/08/2021</time>
+                                    <h3>Uma enfermeira negra do hospital Emílio Ribas, em São Paulo, que está há oito meses na linha de frente do combate ao coronavírus, foi a primeira brasileira a receber neste domingo (17) uma dose da vacina Coronavac. O uso
+                                        emergencial da vacina foi aprovado por unanimidade pela Agência Nacional de Vigilância Sanitária (Anvisa).</h3>
+                                    <a href="#" class="btn fade_4S icon icon-coffee" title="Leia mais..."> Leia mais...</a>
+
+                                </div>
+                                <!--desc-->
+
+                            </article>
+
+                            <article class="blocoArtigo">
+
+                                <div class="mascara">
+                                    <img class="imagem-carrossel" src="img/profissional-saude1.jpg" title="Profissional de saúde">
+                                </div>
+
+                                <div class="desc">
+
+                                    <time datetime="22/08/2021">22/08/2021</time>
+                                    <h3>O crescente número de casos de pessoas que tomaram as duas doses ou dose única, no caso do imunizante da Janssen, das vacinas contra a Covid e que mesmo assim chegaram a falecer da doença, tem trazido ao debate a eficiência
+                                        dos imunizantes. Para tratar sobre esse tema foram consultados os médicos Isabella Ballalai, Lorena de Castro Diniz e o secretário executivo de Saúde da Paraíba, Daniel Beltrammi.</h3>
+                                    <a href="#" class="btn fade_4S icon icon-coffee" title="Leia mais..."> Leia mais...</a>
+
+                                </div>
+                                <!--desc-->
+
+                            </article>
+
+                            <article class="blocoArtigo">
+
+                                <div class="mascara">
+                                    <img class="imagem-carrossel" src="img/profissional-saude3.jpg" title="Profissional de saúde">
+                                </div>
+
+                                <div class="desc">
+
+                                    <time datetime="22/08/2021">22/08/2021</time>
+                                    <h3>O ministro da Saúde, Marcelo Queiroga, disse nesta quarta-feira (18) que a aplicação da terceira dose para reforçar a imunização contra a Covid-19 deve começar por profissionais de saúde e idosos. “A gente vai começar por
+                                        grupos prioritários. De novo, profissionais de saúde, os mais idosos”, disse Queiroga à imprensa.</h3>
+                                    <a href="#" class="btn fade_4S icon icon-coffee" title="Leia mais..."> Leia mais...</a>
+
+                                </div>
+                                <!--desc-->
+
+                            </article>
+
+                            <article class="blocoArtigo">
+
+                                <div class="mascara">
+                                    <img class="imagem-carrossel" src="img/aplicacao-vacina14.jpg" title="Aplicação de vacina">
+                                </div>
+
+                                <div class="desc">
+
+                                    <time datetime="22/08/2021">22/08/2021</time>
+                                    <h3>Recentemente um estudo recente da Universidade de São Paulo (USP) e da Universidade Estadual Paulista (Unesp) avaliou o efeito das vacinas contra o novo coronavírus na população brasileira e concluiu que 91,49% das pessoas
+                                        que morreram pela infecção, entre maio e julho deste ano, não tinham tomado vacina ou não estavam totalmente vacinadas.</h3>
+                                    <a href="#" class="btn fade_4S icon icon-coffee" title="Leia mais..."> Leia mais...</a>
+
+                                </div>
+                                <!--desc-->
+
+                            </article>
+
+                            <article class="blocoArtigo">
+
+                                <div class="mascara">
+                                    <img class="imagem-carrossel" src="img/aplicacao-vacina.jpg" title="Aplicação de vacina">
+                                </div>
+
+                                <div class="desc">
+
+                                    <time datetime="22/08/2021">22/08/2021</time>
+                                    <h3>A Coordenadoria de Vigilância em Saúde (Covisa) da Secretaria Municipal de Saúde de São Paulo registra pelo menos dois casos de médicos que omitiram já estarem imunizados com duas doses de vacina contra a Covid-19 para
+                                        conseguirem novas aplicações do imunizante como reforço. </h3>
+                                    <a href="#" class="btn fade_4S icon icon-coffee" title="Leia mais..."> Leia mais...</a>
+
+                                </div>
+                                <!--desc-->
+
+                            </article>
+                            <article class="blocoArtigo">
+
+                                <div class="mascara">
+                                    <img class="imagem-carrossel" src="img/aplicacao-vacina3.jpg" title="foto">
+                                </div>
+
+                                <div class="desc">
+
+                                    <time datetime="22/08/2021">22/08/2021</time>
+                                    <h3>O ministro da Saúde, Marcelo Queiroga, disse nesta quarta-feira (18) que a aplicação da terceira dose para reforçar a imunização contra a Covid-19 deve começar por profissionais de saúde e idosos. “A gente vai começar por
+                                        grupos prioritários. De novo, profissionais de saúde, os mais idosos”, disse Queiroga à imprensa.</h3>
+                                    <a href="#" class="btn fade_4S icon icon-coffee" title="Leia mais..."> Leia mais...</a>
+
+                                </div>
+                                <!--desc-->
+
+                            </article>
+
+
+                        </div>
+                        <!--Carrossel Finaliza-->
+
+                    </div>
+                    <!--Box Artigo-->
+                </div>
+            </section>
+        </main>
+
+        <aside id="acessibilidade">
+            <!-- barra lateral com 3 ícones/botões: A+, A- e Libras -->
+            <div id="aside-tamanhoFonte">
+                <!-- div com botões para aumentar e diminuir tamanho da fonte -->
+                <button class="btn-AlteraTamFonte" id="btn-AumentaLetra">A+</button>
+                <!-- botão para aumentar tamanho da fonte -->
+
+                <button class="btn-AlteraTamFonte" id="btn-DiminuiLetra">A-</button>
+                <!-- botão para diminuir tamanho da fonte -->
+            </div>
+
+            <div vw class="enabled">
+                <!-- div com botão para habilitar Libras -->
+                <div vw-access-button class="active"></div>
+                <div vw-plugin-wrapper>
+                    <div class="vw-plugin-top-wrapper"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- <footer>
+            <section>
+                <nav>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="#vacinas-inicio">Vacinas</a></li>
+                        <li><a href="">Ocupação Leitos</a></li>
+                        <li><a href="">Quem Somos</a></li>
+                    </ul>
+                </nav>
+            </section>
+    
+            <section class="icones-textos">
+                <span>
+                        <a href="https://goo.gl/maps/PjV6FDrgZFZgF8cf7" target="_blank">
+                            <img id="maps" class="logo-redes-sociais" src="img/logo-maps.png" alt="ícone de pin representando Google Maps" title="clique aqui para abrir o Google Maps">
+                        </a>
+                    </span>
+                <p>
+                    Secretaria de Saúde do Estado de São Paulo<br> Av Dr Enéas Carvalho de Aguiar, 188 - São Paulo<br> CEP: 05403-000<br> Fone(11)3066 8000
+                </p>
+            </section>
+    
+            <section>
+                <nav>
+                    <ul>
+                        <li class="icones-textos">
+                            <a href="#">
+                                <img class="logo-redes-sociais" src="img/logo-face.png" alt="logo do Facebook" title="ícones feitos por Freepik from www.flaticon.com">
+                            </a>
+                            <a href="#" title="clique aqui para visitar nossa página no Facebook">Facebook</a>
+    
+                        </li>
+                        <li class="icones-textos">
+                            <a href="#">
+                                <img class="logo-redes-sociais" src="img/logo-insta.png" alt="logo do Instagram" title="ícones feitos por Freepik from www.flaticon.com">
+                            </a>
+                            <a href="#" title="clique aqui para visitar nosso perfil no Instagram">Instagram</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </footer> -->
+    </body>
+
+</html>

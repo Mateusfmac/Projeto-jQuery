@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        <!-- ESTILOS -->   
+        
+        <!-- <link rel="stylesheet" href="css/jquery-ui.structure.css">  -->
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <link rel="stylesheet" href="css/jquery-ui.theme.css">   
+        <link rel="stylesheet" href="css/navbar.css">
+        <link rel="stylesheet" href="css/vacinas.css"><!-- estilo main--> 
+        <style>
+            label {
+                display: inline-block;
+                width: 5em;
+            }
+        </style>
+
+        <!-- arquivos Javascript -->
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery-ui.js"></script>          
+        <script src="https://kit.fontawesome.com/a7d1e099f6.js" crossorigin="anonymous"></script>
+        <script src="script_inicio.js"></script>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            //variável arrayTextos guarda tags que podem conter textos como conteúdo
+            var arrayTextos = ['p', 'a', 'h1', 'h2', 'h3', 'h4', 'input', 'placeholder', 'li', 'figcaption', 'span', 'ul'];
+            var fonteAumentada = 0;
+            var fonteDiminuida = 0;
+            var tamFonte = 0;            
+
+            // widget de Libras
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+    
+            $(document).ready(function(){
+                // funções que regem o comportamento de accordion e tabs (JQuery UI)
+                $(".accordion").accordion();
+                $("#tabs").tabs();
+                $(document).tooltip();
+
+                window.addEventListener('scroll', function() {
+                    const header = document.querySelector('header');
+                    const windowPosition = window.scrollY > 0;
+                    header.classList.toggle('scrolling-active', windowPosition);
+                });
+                
+
+                $('#btn-AumentaLetra').click(function() {
+                    for (tag of arrayTextos) {
+                        tamFonte = parseFloat($(tag).css('fontSize'));
+                        if (tamFonte < 19 && tamFonte >= 16) {
+                                fonteAumentada = tamFonte * 1.10;
+                                $(tag).css({fontSize: fonteAumentada});
+                            } else if (tamFonte >= 19) {
+                                fonteAumentada = tamFonte * 1.03;             
+                                $(tag).css({fontSize: fonteAumentada}); 
+                            } else if (tamFonte < 16) {
+                                fonteAumentada = tamFonte * 1.15;
+                                $(tag).css({fontSize: fonteAumentada});
+                            }                            
+                    }
+                });
+
+                $('#btn-DiminuiLetra').click(function() {
+                    for (tag of arrayTextos) {
+                        tamFonte = parseFloat($(tag).css('fontSize'));
+                            if (tamFonte < 20 && tamFonte >= 16) {
+                                fonteDiminuida = tamFonte * 0.90;
+                                $(tag).css({fontSize: fonteDiminuida});
+                            } else if (tamFonte > 20) {
+                                fonteDiminuida = tamFonte * 0.95;             
+                                $(tag).css({fontSize: fonteDiminuida}); 
+                            } else if (tamFonte < 16) {
+                                fonteDiminuida = tamFonte * 1;
+                                $(tag).css({fontSize: fonteDiminuida});
+                            }                            
+                    }
+                });
+            });   
+        </script>
+            
+        <title>Vacinas</title>
+    </head>
+
+    <body>
+        <header class="header-nav-bar" id="vacinas-inicio">
+            <div class="container">
+                <nav class="nav">
+                    <!-- <img src="#" alt="Logo"> -->
+                    <a href='index.html' class='logo1'>
+                        <img src='img/logo-SP-branco.svg' id='imglogo' alt='São Paulo logo'>
+                    </a>
+    
+                    <!-- menu normal -->
+                    <ul class="nav-list">
+                        <li>
+                            <a href='index.html' class='nav-link'>Home</a>
+                        </li>
+                        <li>
+                            <a href='#' class='nav-link'>Vacinas</a>
+                        </li>
+                        <li>
+                            <a href='cadastroVac.html' class='nav-link'>Cadastro para Vacinação</a>
+                        </li>
+                        <li>
+                            <a href='fases.html' class='nav-link'>Retomada da Economia</a>
+                        </li>
+                        <li>
+                            <a href='protocolos.html' class='nav-link'>Protocolos</a>
+                        </li>
+                        <!-- <li>
+                            <a href='fases.html' class='nav-link'>Quem Somos</a>
+                        </li> -->
+                    </ul>
+                    <!-- search box -->
+                    <div class="search-box">
+                        <button class="btn-search"><i class="fas fa-search"></i></button>
+                        <input type="text" class="input-search" placeholder="Digite para pesquisar...">
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- banner com vídeo (vírus) abaixo do header -->
+        <video class="hero" autoplay muted loop src='img/coronavirus.mp4'></video>
+        <div class="container-titulos">
+            <h1 class="h1-hero">VACINAS</h1>
+            <h2 class="h2-hero">Saiba Mais</h2>
+        </div>
+        
+        <main>           
+            <div id="tabs"><!-- DIV com JQuery UI Tabs: cada div interna é uma ficha de vacina -->
+                <ul id="lista-vacinas"><!-- lista com nomes das vacinas, que aparecem em cima -->
+                    <li><a href="#tabs-1" class="nome-vacina">AstraZeneca / Oxford</a></li>
+                    <li><a href="#tabs-2" class="nome-vacina">Coronavac</a></li>
+                    <li><a href="#tabs-3" class="nome-vacina">Janssen</a></li>
+                    <li><a href="#tabs-4" class="nome-vacina">Pfizer</a></li>
+                </ul>
+               
+                <div id="tabs-1"><!-- ficha de vacina AstraZeneca -->
+                    <section class="section1-foto-vacina"><!-- 1ª section da DIV Astrazeneca, com foto e info sobre laboratório -->
+                        <h2 class="titulo-section">Astrazeneca / Oxford</h2>
+                        <figure><!-- 1ª section da DIV Astrazeneca, com foto e info sobre laboratório -->
+                            <a href="https://unsplash.com/@mbaumi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">
+                                <img src="img/astrazeneca.jpg" alt="foto frasco de vacina AstraZeneca" title="Photo by 
+                                Mika Baumeister
+                                 on 
+                                Unsplash"><!-- foto do frasco de vacina com link externo para fonte da imagem e TOOLTIP com crédito no ATRIBUTO TITLE-->                               
+                            </a>
+                            <!-- <figcaption class="legFotoVacina">
+                                Photo by 
+                                <a href="https://unsplash.com/@mbaumi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Mika Baumeister</a>
+                                 on 
+                                <a href="https://unsplash.com/s/photos/vaccina-astrazeneca?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a>
+                            </figcaption> -->
+                        </figure> 
+
+                        <div class="laboratorio">
+                            <h3 class="subtitulos-sections-tab">Laboratório:</h3>
+                            <p class="textos-tab">
+                                Desenvolvida pelos pesquisadores da Universidade de Oxford em colaboração com o laboratório britânico AstraZeneca.
+                            </p>
+                        </div>
+
+                    </section>
+
+                    <section class="infos-rapidas">
+                        <h2 class="titulo-section">Informações Rápidas</h2>
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Eficácia:</h3>
+                            <p class="textos-tab">
+                                63,09% contra a infeção sintomática pelo SARS-CoV-2.<br>
+                                Intervalos mais longos entre as doses, com limites de 8 a 12 semanas, estão associados a uma maior eficácia da vacina.
+                            </p> 
+                        </div>
+
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Quantidade de doses:</h3>
+                            <p class="textos-tab">
+                                A dosagem recomendada é de <b><u>duas doses</u></b> administradas por via intramuscular (0,5 ml cada), com um intervalo de 8 a 12 semanas. 
+                            </p> 
+                        </div>
+
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Tecnologia:</h3>
+                            <p class="textos-tab">
+                                Vetor adenovirus recombinante.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Faixa etária autorizada:</h3>
+                            <p class="textos-tab">
+                                A partir de 18 anos.
+                            </p>
+                        </div> 
+                        
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Fonte:</h3>
+                                <p class="textos-tab">
+                                    <a class="links-tabs" href="https://www.who.int/pt/news-room/feature-stories/detail/the-oxford-astrazeneca-covid-19-vaccine-what-you-need-to-know?gclid=CjwKCAjwyIKJBhBPEiwAu7zll4rB2j5wj3iTux7_UQmWS0Q7n6xg8JNQEoIbA0yffTnCXshpRSQJMxoC21QQAvD_BwE" target="_blank">
+                                        Organização Mundial de Saúde (OMS)
+                                    </a>
+                                </p>
+                        </div>
+                    </section> 
+                     
+                    <section class="material-complementar">
+                        <h2 class="titulo-section">Material Complementar</h2>
+                        <div class="accordion">
+                            <h3 class="subtitulos-sections-tab">Reações</h3>
+                            <div>
+                                <p class="textos-tab">
+                                    De acordo com os dados reunidos nos estudos clínicos de fase 3, os efeitos colaterais mais comuns associados à vacina foram:
+                                </p>
+
+                                <ul>
+                                    <li>Sensibilidade no local da injeção (relatada por mais de 60% dos voluntários);
+                                    </li>
+                                    
+                                    <li class="textos-tab">Dor no local da injeção, dor de cabeça e fadiga (relatadas por mais de 50% dos voluntários);
+                                    </li>
+                                    
+                                    <li class="textos-tab">Dor no corpo e mal-estar (relatadas por mais de 40% dos voluntários);
+                                    </li>
+                                    
+                                    <li class="textos-tab">Febre e calafrios (relatados por mais de 30% dos voluntários);
+                                    </li>
+                                    
+                                    <li class="textos-tab">Dor nas articulações e náusea (relatadas por mais de 20% dos voluntários).
+                                    </li>                                   
+                                </ul>
+
+                                <p class="textos-tab">
+                                    A maioria das reações adversas foi de intensidade leve a moderada e normalmente resolvida poucos dias após a vacinação. As reações adversas foram mais frequentes após a primeira dose da vacina.<br>
+
+                                    Um efeito colateral incomum é o inchaço das glândulas na axila ou no pescoço, no mesmo lado do braço onde foi aplicada a vacina. Isso pode durar cerca de 10 dias, mas, se durar mais, consulte seu médico.<br>
+                                    
+                                    As reações adversas foram geralmente mais leves e relatadas de forma menos frequente em idosos (com 65 anos de idade ou mais).
+                                </p>
+                                
+                                <span class="textos-tab">Fonte: 
+                                    <a class="links-tabs" href="https://g1.globo.com/bemestar/vacina/noticia/2021/06/03/vacina-astrazeneca-quais-os-sintomas-as-reacoes-e-os-possiveis-efeitos-colaterais-entre-vacinados.ghtml" target="_blank">https://g1.globo.com/bemestar/vacina/noticia/2021/06/03/vacina-astrazeneca-quais-os-sintomas-as-reacoes-e-os-possiveis-efeitos-colaterais-entre-vacinados.ghtml
+                                    </a>
+                                </span>
+                            </div>
+
+                            <h3 class="subtitulos-sections-tab">Quem deve evitar essa vacina</h3>
+                            <div>
+                                <h4 class="subtitulos-accordion">As mulheres grávidas devem ser vacinadas?</h4>
+                                <p class="textos-tab">
+                                    Embora a gravidez coloque as mulheres em maior risco de COVID-19 grave, são muito escassos os dados disponíveis para avaliar a segurança da vacina na gravidez.<br> 
+
+                                    As mulheres grávidas podem receber a vacina, se o benefício da sua vacinação superar os potenciais riscos da vacina. <br> 
+
+                                    Por essa razão, as mulheres grávidas em alto risco de exposição ao SARS-CoV-2 (por ex., as profissionais de saúde) ou que tenham comorbilidades que possam agravar o seu risco de doença grave, podem ser vacinadas, em consulta com o seu prestador de cuidados de saúde.
+                                </p>
+                                
+
+                                <h4 class="subtitulos-accordion">A quem não é recomendada a vacina?</h4>
+                                <p class="textos-tab">
+                                    As pessoas que tenham história de reação alérgica grave a qualquer componente da vacina não a devem tomar.<br>
+
+                                    A vacina não é recomendada a pessoas menores de 18 anos, enquanto não houver resultados de outros estudos.
+                                </p>
+                                    
+                            </div>
+
+                            <h3 class="subtitulos-sections-tab">Bulas</h3>
+                            <div>
+                                <p class="textos-tab">
+                                    <a class="links-tabs" href="https://consultas.anvisa.gov.br/#/bulario/q/?nomeProduto=VACINA%20COVID-19%20(RECOMBINANTE)" target="_blank">
+                                        Bulas Astrazeneca
+                                    </a>
+                                </p>
+                            </div>
+                          </div>
+                    </section>               
+                </div>
+                
+                <div id="tabs-2"><!-- ficha de vacina AstraZeneca -->
+                    <section class="section1-foto-vacina"><!-- 1ª section da DIV Astrazeneca, com foto e info sobre laboratório -->
+                        <h2 class="titulo-section">Coronavac</h2>
+                        <figure><!-- 1ª section da DIV Astrazeneca, com foto e info sobre laboratório -->
+                            <a href="https://unsplash.com/@ketorres?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">
+                                <img src="img/coronavac.jpg" alt="foto frasco de vacina Coronavac" title="Photo by 
+                                Carlos Enrique Torres Barrios
+                                 on 
+                                Unsplash"><!-- foto do frasco de vacina com link externo para fonte da imagem e TOOLTIP com crédito no ATRIBUTO TITLE-->                               
+                            </a>
+  
+                            <!-- <figcaption class="legFotoVacina">
+                                Photo by 
+                                <a href="https://unsplash.com/@mbaumi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Mika Baumeister</a>
+                                 on 
+                                <a href="https://unsplash.com/s/photos/vaccina-astrazeneca?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a>
+                            </figcaption> -->
+                        </figure> 
+
+                        <div class="laboratorio">
+                            <h3 class="subtitulos-sections-tab">Laboratório:</h3>
+                            <p class="textos-tab">
+                                Desenvolvida pela empresa biofarmacêutica chinesa Sinovac Biotech e produzida no Brasil pelo Instituto Butantan, em São Paulo.
+                            </p>
+                        </div>
+
+                    </section>
+
+                    <section class="infos-rapidas">
+                        <h2 class="titulo-section">Informações Rápidas</h2>
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Eficácia:</h3>
+                            <p class="textos-tab">
+                                Um amplo estudo de Fase 3 em vários países demonstrou que 2 doses, administradas em um intervalo de 21 dias, têm uma eficácia de 79% contra a infecção sintomática de SARS-CoV-2 14 ou mais dias após a segunda dose. <br>
+                                A eficácia da vacina contra a hospitalização foi de 79%.
+                            </p> 
+                        </div>
+
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Quantidade de doses:</h3>
+                            <p class="textos-tab">
+                                A SAGE recomenda o uso da vacina em <b><u>2 doses</u></b> (0,5 ml) administradas por via intramuscular. <br>
+                                A OMS recomenda um intervalo de 3–4 semanas entre a primeira e a segunda dose. Se a segunda dose for administrada menos de 3 semanas após a primeira, a dose não precisa ser repetida. Se a administração da segunda dose for atrasada para além de 4 semanas, deve ser administrada o mais cedo possível.<br>
+                                Recomenda-se que todos os indivíduos vacinados recebam duas doses.
+                            </p> 
+                        </div>
+
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Tecnologia:</h3>
+                            <p class="textos-tab">
+                                Vírus inativado.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Faixa etária autorizada:</h3>
+                            <p class="textos-tab">
+                                A partir de 18 anos.
+                            </p>
+                        </div> 
+                        
+                        <!-- <div>
+                            <h3 class="subtitulos-sections-tab">Fonte:</h3>
+                                <p class="textos-tab">
+                                    <a class="links-tabs" href="https://www.who.int/pt/news-room/feature-stories/detail/the-oxford-astrazeneca-covid-19-vaccine-what-you-need-to-know?gclid=CjwKCAjwyIKJBhBPEiwAu7zll4rB2j5wj3iTux7_UQmWS0Q7n6xg8JNQEoIbA0yffTnCXshpRSQJMxoC21QQAvD_BwE" target="_blank">
+                                        Organização Mundial de Saúde (OMS)
+                                    </a>
+                                </p>
+                        </div> -->
+                    </section> 
+                     
+                    <section class="material-complementar">
+                        <h2 class="titulo-section">Material Complementar</h2>
+                        <div class="accordion">
+                            <h3 class="subtitulos-sections-tab">Reações</h3>
+                            <div>
+                                <p class="textos-tab">
+                                    Com menos relatos de reações adversas, a bula da Coronavac prevê que pode ocorrer:
+                                </p>
+
+                                <ul>
+                                    <li class="textos-tab">dor de cabeça;</li>                                    
+                                    <li class="textos-tab">cansaço;</li>                                    
+                                    <li class="textos-tab">dor e/ou coceira no local da aplicação;</li>
+                                    <li class="textos-tab">enjoo</li>
+                                    <li class="textos-tab">diarreia</li>
+                                    <li class="textos-tab">dor muscular</li>
+                                    <li class="textos-tab">dor ao engolir</li>
+                                    <li class="textos-tab">calafrios</li>
+                                    <li class="textos-tab">perda de apetite</li>
+                                    <li class="textos-tab">tosse</li>
+                                    <li class="textos-tab">dor nas articulações</li>
+                                    <li class="textos-tab">coceira</li>
+                                    <li class="textos-tab">coriza</li>
+                                    <li class="textos-tab">congestão nasal</li>
+                                    <li class="textos-tab">vermelhidão</li>
+                                    <li class="textos-tab">inchaço</li>
+                                    <li class="textos-tab">inchaço</li>
+                                                                    
+                                </ul>
+
+
+                                
+                                <!-- <span class="textos-tab">Fonte: 
+                                    <a class="links-tabs" href="https://g1.globo.com/bemestar/vacina/noticia/2021/06/03/vacina-astrazeneca-quais-os-sintomas-as-reacoes-e-os-possiveis-efeitos-colaterais-entre-vacinados.ghtml" target="_blank">https://g1.globo.com/bemestar/vacina/noticia/2021/06/03/vacina-astrazeneca-quais-os-sintomas-as-reacoes-e-os-possiveis-efeitos-colaterais-entre-vacinados.ghtml
+                                    </a>
+                                </span> -->
+                            </div>
+
+                            <h3 class="subtitulos-sections-tab">Quem deve evitar essa vacina</h3>
+                            <div>
+                                Desta forma, as únicas pessoas que não poderão fazer o uso das vacinas são aquelas que já tiveram reações alérgicas, como anafilaxia (reação grave), por algum dos componentes.<br> No caso da vacina do Instituto Butantan, são eles: hidróxido de alumínio, hidrogenofosfato dissódico, di-hidrogenofosfato de sódio, cloreto de sódio e hidróxido de sódio.
+                            </div>
+
+                            <h3 class="subtitulos-sections-tab">Bulas</h3>
+                            <div>
+                                <p class="textos-tab">
+                                    <a class="links-tabs" href="https://consultas.anvisa.gov.br/#/bulario/q/?nomeProduto=VACINA%20COVID-19%20(RECOMBINANTE)" target="_blank">
+                                        Bula Astrazeneca
+                                    </a>
+                                </p>
+                            </div>
+                          </div>
+                    </section>               
+                </div>   
+                
+                <div id="tabs-3"><!-- ficha de vacina AstraZeneca -->
+                    <section class="section1-foto-vacina"><!-- 1ª section da DIV Astrazeneca, com foto e info sobre laboratório -->
+                        <h2 class="titulo-section">Janssen</h2>
+                        <figure><!-- 1ª section da DIV Astrazeneca, com foto e info sobre laboratório -->
+                            <a href="https://unsplash.com/@mbaumi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">
+                                <img src="img/janssen2.jpg" alt="foto frasco de vacina Janssen" title="Photo by 
+                                Mika Baumeister
+                                 on 
+                                Unsplash"><!-- foto do frasco de vacina com link externo para fonte da imagem e TOOLTIP com crédito no ATRIBUTO TITLE-->                               
+                            </a>
+  
+  
+                            <!-- <figcaption class="legFotoVacina">
+                                Photo by 
+                                <a href="https://unsplash.com/@mbaumi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Mika Baumeister</a>
+                                 on 
+                                <a href="https://unsplash.com/s/photos/vaccina-astrazeneca?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a>
+                            </figcaption> -->
+                        </figure> 
+
+                        <div class="laboratorio">
+                            <h3 class="subtitulos-sections-tab">Laboratório:</h3>
+                            <p class="textos-tab">
+                                Desenvolvida pelos pesquisadores da Universidade de Oxford em colaboração com o laboratório britânico AstraZeneca.
+                            </p>
+                        </div>
+
+                    </section>
+
+                    <section class="infos-rapidas">
+                        <h2 class="titulo-section">Informações Rápidas</h2>
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Eficácia:</h3>
+                            <p class="textos-tab">
+                                63,09% contra a infeção sintomática pelo SARS-CoV-2.<br>
+                                Intervalos mais longos entre as doses, com limites de 8 a 12 semanas, estão associados a uma maior eficácia da vacina.
+                            </p> 
+                        </div>
+
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Quantidade de doses:</h3>
+                            <p class="textos-tab">
+                                A dosagem recomendada é de <b><u>duas doses</u></b> administradas por via intramuscular (0,5 ml cada), com um intervalo de 8 a 12 semanas. 
+                            </p> 
+                        </div>
+
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Tecnologia:</h3>
+                            <p class="textos-tab">
+                                Vetor adenovirus recombinante.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Faixa etária autorizada:</h3>
+                            <p class="textos-tab">
+                                A partir de 18 anos.
+                            </p>
+                        </div> 
+                        
+                        <!-- <div>
+                            <h3 class="subtitulos-sections-tab">Fonte:</h3>
+                                <p class="textos-tab">
+                                    <a class="links-tabs" href="https://www.who.int/pt/news-room/feature-stories/detail/the-oxford-astrazeneca-covid-19-vaccine-what-you-need-to-know?gclid=CjwKCAjwyIKJBhBPEiwAu7zll4rB2j5wj3iTux7_UQmWS0Q7n6xg8JNQEoIbA0yffTnCXshpRSQJMxoC21QQAvD_BwE" target="_blank">
+                                        Organização Mundial de Saúde (OMS)
+                                    </a>
+                                </p>
+                        </div> -->
+                    </section> 
+                     
+                    <section class="material-complementar">
+                        <h2 class="titulo-section">Material Complementar</h2>
+                        <div class="accordion">
+                            <h3 class="subtitulos-sections-tab">Reações</h3>
+                            <div>
+                                <p class="textos-tab">
+                                    De acordo com os dados reunidos nos estudos clínicos de fase 3, os efeitos colaterais mais comuns associados à vacina foram:
+                                </p>
+
+                                <ul>
+                                    <li>Sensibilidade no local da injeção (relatada por mais de 60% dos voluntários);
+                                    </li>
+                                    
+                                    <li class="textos-tab">Dor no local da injeção, dor de cabeça e fadiga (relatadas por mais de 50% dos voluntários);
+                                    </li>
+                                    
+                                    <li class="textos-tab">Dor no corpo e mal-estar (relatadas por mais de 40% dos voluntários);
+                                    </li>
+                                    
+                                    <li class="textos-tab">Febre e calafrios (relatados por mais de 30% dos voluntários);
+                                    </li>
+                                    
+                                    <li class="textos-tab">Dor nas articulações e náusea (relatadas por mais de 20% dos voluntários).
+                                    </li>                                   
+                                </ul>
+
+                                <p class="textos-tab">
+                                    A maioria das reações adversas foi de intensidade leve a moderada e normalmente resolvida poucos dias após a vacinação. As reações adversas foram mais frequentes após a primeira dose da vacina.<br>
+
+                                    Um efeito colateral incomum é o inchaço das glândulas na axila ou no pescoço, no mesmo lado do braço onde foi aplicada a vacina. Isso pode durar cerca de 10 dias, mas, se durar mais, consulte seu médico.<br>
+                                    
+                                    As reações adversas foram geralmente mais leves e relatadas de forma menos frequente em idosos (com 65 anos de idade ou mais).
+                                </p>
+                                
+                                <!-- <span class="textos-tab">Fonte: 
+                                    <a class="links-tabs" href="https://g1.globo.com/bemestar/vacina/noticia/2021/06/03/vacina-astrazeneca-quais-os-sintomas-as-reacoes-e-os-possiveis-efeitos-colaterais-entre-vacinados.ghtml" target="_blank">https://g1.globo.com/bemestar/vacina/noticia/2021/06/03/vacina-astrazeneca-quais-os-sintomas-as-reacoes-e-os-possiveis-efeitos-colaterais-entre-vacinados.ghtml
+                                    </a>
+                                </span> -->
+                            </div>
+
+                            <h3 class="subtitulos-sections-tab">Quem deve evitar essa vacina</h3>
+                            <div>
+                                
+                            </div>
+
+                            <h3 class="subtitulos-sections-tab">Bulas</h3>
+                            <div>
+                                <p class="textos-tab">
+                                    <a class="links-tabs" href="https://consultas.anvisa.gov.br/#/bulario/q/?nomeProduto=VACINA%20COVID-19%20(RECOMBINANTE)" target="_blank">
+                                        Bula Astrazeneca
+                                    </a>
+                                </p>
+                            </div>
+                          </div>
+                    </section>               
+                </div>
+
+                <div id="tabs-4"><!-- ficha de vacina AstraZeneca -->
+                    <section class="section1-foto-vacina"><!-- 1ª section da DIV Astrazeneca, com foto e info sobre laboratório -->
+                        <h2 class="titulo-section">Pfizer</h2>
+                        <figure><!-- 1ª section da DIV Astrazeneca, com foto e info sobre laboratório -->
+                            <a href="https://unsplash.com/@jesseapaul?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">
+                                <img src="img/pfizer2.jpg" alt="foto frasco de vacina Janssen" title="Photo by 
+                                Jesse Paul
+                                 on 
+                                Unsplash"><!-- foto do frasco de vacina com link externo para fonte da imagem e TOOLTIP com crédito no ATRIBUTO TITLE-->                               
+                            </a>
+  
+                            <!-- <figcaption class="legFotoVacina">
+                                Photo by 
+                                <a href="https://unsplash.com/@mbaumi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Mika Baumeister</a>
+                                 on 
+                                <a href="https://unsplash.com/s/photos/vaccina-astrazeneca?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a>
+                            </figcaption> -->
+                        </figure> 
+
+                        <div class="laboratorio">
+                            <h3 class="subtitulos-sections-tab">Laboratório:</h3>
+                            <p class="textos-tab">
+                                Desenvolvida pelos pesquisadores da Universidade de Oxford em colaboração com o laboratório britânico AstraZeneca.
+                            </p>
+                        </div>
+
+                    </section>
+
+                    <section class="infos-rapidas">
+                        <h2 class="titulo-section">Informações Rápidas</h2>
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Eficácia:</h3>
+                            <p class="textos-tab">
+                                63,09% contra a infeção sintomática pelo SARS-CoV-2.<br>
+                                Intervalos mais longos entre as doses, com limites de 8 a 12 semanas, estão associados a uma maior eficácia da vacina.
+                            </p> 
+                        </div>
+
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Quantidade de doses:</h3>
+                            <p class="textos-tab">
+                                A dosagem recomendada é de <b><u>duas doses</u></b> administradas por via intramuscular (0,5 ml cada), com um intervalo de 8 a 12 semanas. 
+                            </p> 
+                        </div>
+
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Tecnologia:</h3>
+                            <p class="textos-tab">
+                                Vetor adenovirus recombinante.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="subtitulos-sections-tab">Faixa etária autorizada:</h3>
+                            <p class="textos-tab">
+                                A partir de 18 anos.
+                            </p>
+                        </div> 
+                        
+                        <!-- <div>
+                            <h3 class="subtitulos-sections-tab">Fonte:</h3>
+                                <p class="textos-tab">
+                                    <a class="links-tabs" href="https://www.who.int/pt/news-room/feature-stories/detail/the-oxford-astrazeneca-covid-19-vaccine-what-you-need-to-know?gclid=CjwKCAjwyIKJBhBPEiwAu7zll4rB2j5wj3iTux7_UQmWS0Q7n6xg8JNQEoIbA0yffTnCXshpRSQJMxoC21QQAvD_BwE" target="_blank">
+                                        Organização Mundial de Saúde (OMS)
+                                    </a>
+                                </p>
+                        </div> -->
+                    </section> 
+                     
+                    <section class="material-complementar">
+                        <h2 class="titulo-section">Material Complementar</h2>
+                        <div class="accordion">
+                            <h3 class="subtitulos-sections-tab">Reações</h3>
+                            <div>
+                                <p class="textos-tab">
+                                    De acordo com os dados reunidos nos estudos clínicos de fase 3, os efeitos colaterais mais comuns associados à vacina foram:
+                                </p>
+
+                                <ul>
+                                    <li>Sensibilidade no local da injeção (relatada por mais de 60% dos voluntários);
+                                    </li>
+                                    
+                                    <li class="textos-tab">Dor no local da injeção, dor de cabeça e fadiga (relatadas por mais de 50% dos voluntários);
+                                    </li>
+                                    
+                                    <li class="textos-tab">Dor no corpo e mal-estar (relatadas por mais de 40% dos voluntários);
+                                    </li>
+                                    
+                                    <li class="textos-tab">Febre e calafrios (relatados por mais de 30% dos voluntários);
+                                    </li>
+                                    
+                                    <li class="textos-tab">Dor nas articulações e náusea (relatadas por mais de 20% dos voluntários).
+                                    </li>                                   
+                                </ul>
+
+                                <p class="textos-tab">
+                                    A maioria das reações adversas foi de intensidade leve a moderada e normalmente resolvida poucos dias após a vacinação. As reações adversas foram mais frequentes após a primeira dose da vacina.<br>
+
+                                    Um efeito colateral incomum é o inchaço das glândulas na axila ou no pescoço, no mesmo lado do braço onde foi aplicada a vacina. Isso pode durar cerca de 10 dias, mas, se durar mais, consulte seu médico.<br>
+                                    
+                                    As reações adversas foram geralmente mais leves e relatadas de forma menos frequente em idosos (com 65 anos de idade ou mais).
+                                </p>
+                                
+                                <!-- <span class="textos-tab">Fonte: 
+                                    <a class="links-tabs" href="https://g1.globo.com/bemestar/vacina/noticia/2021/06/03/vacina-astrazeneca-quais-os-sintomas-as-reacoes-e-os-possiveis-efeitos-colaterais-entre-vacinados.ghtml" target="_blank">https://g1.globo.com/bemestar/vacina/noticia/2021/06/03/vacina-astrazeneca-quais-os-sintomas-as-reacoes-e-os-possiveis-efeitos-colaterais-entre-vacinados.ghtml
+                                    </a>
+                                </span> -->
+                            </div>
+
+                            <h3 class="subtitulos-sections-tab">Quem deve evitar essa vacina</h3>
+                            <div>
+                                
+                            </div>
+
+                            <h3 class="subtitulos-sections-tab">Bulas</h3>
+                            <div>
+                                <p class="textos-tab">
+                                    <a class="links-tabs" href="https://consultas.anvisa.gov.br/#/bulario/q/?nomeProduto=VACINA%20COVID-19%20(RECOMBINANTE)" target="_blank">
+                                        Bula Astrazeneca
+                                    </a>
+                                </p>
+                            </div>
+                          </div>
+                    </section>               
+                </div>
+
+                
+            </div>
+        </main>
+
+        <aside id="acessibilidade"><!-- barra lateral com 3 ícones/botões: A+, A- e Libras -->
+            <div id="aside-tamanhoFonte"><!-- div com botões para aumentar e diminuir tamanho da fonte -->              
+                <button class="btn-AlteraTamFonte" id="btn-AumentaLetra">A+</button><!-- botão para aumentar tamanho da fonte -->
+                
+                <button class="btn-AlteraTamFonte" id="btn-DiminuiLetra">A-</button><!-- botão para diminuir tamanho da fonte -->
+            </div>
+          
+            <div vw class="enabled"><!-- div com botão para habilitar Libras -->
+                <div vw-access-button class="active"></div>
+                <div vw-plugin-wrapper>
+                    <div class="vw-plugin-top-wrapper"></div>
+                </div>
+            </div>
+        </aside>
+        
+        <footer>
+            <section>
+                <nav>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="#vacinas-inicio">Vacinas</a></li>
+                        <li><a href="">Ocupação Leitos</a></li>
+                        <li><a href="">Quem Somos</a></li>
+                    </ul>
+                </nav>               
+            </section>
+
+            <section class="icones-textos">
+                <span>
+                    <a href="https://goo.gl/maps/PjV6FDrgZFZgF8cf7" target="_blank">
+                        <img id="maps" class="logo-redes-sociais" src="img/logo-maps.png" alt="ícone de pin representando Google Maps" title="clique aqui para abrir o Google Maps">
+                    </a>
+                </span>
+                <p>
+                    Secretaria de Saúde do Estado de São Paulo<br>
+                    Av Dr Enéas Carvalho de Aguiar, 188 - São Paulo<br>
+                    CEP: 05403-000<br>
+                    Fone(11)3066 8000
+                </p>
+            </section>
+
+            <section>
+                <nav>
+                    <ul>
+                        <li class="icones-textos">
+                            <a href="#">
+                                <img class="logo-redes-sociais" src="img/logo-face.png" alt="logo do Facebook" title="ícones feitos por Freepik from www.flaticon.com">
+                            </a>
+                            <a href="#" title="clique aqui para visitar nossa página no Facebook">Facebook</a>
+                            
+                        </li>
+                        <li class="icones-textos">
+                            <a href="#">
+                                <img class="logo-redes-sociais" src="img/logo-insta.png" alt="logo do Instagram" title="ícones feitos por Freepik from www.flaticon.com">
+                            </a>
+                        <a href="#" title="clique aqui para visitar nosso perfil no Instagram">Instagram</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' href='css/navbar.css'>
+    <link rel='stylesheet' href='css/fases.css'>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://kit.fontawesome.com/a7d1e099f6.js' crossorigin='anonymous'></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        //variável arrayTextos guarda tags que podem conter textos como conteúdo
+        var arrayTextos = ['p', 'a', 'h1', 'h2', 'h3', 'h4', 'input', 'placeholder', 'li', 'figcaption', 'span', 'ul', 'td'];
+        var fonteAumentada = 0;
+        var fonteDiminuida = 0;
+        var tamFonte = 0;            
+
+        // widget de Libras
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+
+        $(document).ready(function(){
+            // funções que regem o comportamento de accordion e tabs (JQuery UI)            
+
+            $('#btn-AumentaLetra').click(function() {
+                for (tag of arrayTextos) {
+                    tamFonte = parseFloat($(tag).css('fontSize'));
+                    if (tamFonte < 19 && tamFonte >= 16) {
+                            fonteAumentada = tamFonte * 1.10;
+                            $(tag).css({fontSize: fonteAumentada});
+                        } else if (tamFonte >= 19) {
+                            fonteAumentada = tamFonte * 1.03;             
+                            $(tag).css({fontSize: fonteAumentada}); 
+                        } else if (tamFonte < 16) {
+                            fonteAumentada = tamFonte * 1.15;
+                            $(tag).css({fontSize: fonteAumentada});
+                        }                            
+                }
+            });
+
+            $('#btn-DiminuiLetra').click(function() {
+                for (tag of arrayTextos) {
+                    tamFonte = parseFloat($(tag).css('fontSize'));
+                        if (tamFonte < 20 && tamFonte >= 16) {
+                            fonteDiminuida = tamFonte * 0.90;
+                            $(tag).css({fontSize: fonteDiminuida});
+                        } else if (tamFonte > 20) {
+                            fonteDiminuida = tamFonte * 0.95;             
+                            $(tag).css({fontSize: fonteDiminuida}); 
+                        } else if (tamFonte < 16) {
+                            fonteDiminuida = tamFonte * 1;
+                            $(tag).css({fontSize: fonteDiminuida});
+                        }                            
+                }
+            });
+        });   
+    </script>
+
+    <title>Fases de Retomada da Economia</title>
+</head>
+
+<body>
+    <header id='pageHeader' class='header-nav-bar'>
+        <div class='container'>
+
+            <nav class='nav'>
+
+                <div>
+                    <a href='index.html' class='logo1'><img src='img/logo-SP-branco.svg' id='imglogo' alt='São Paulo logo'></a>
+                </div>
+
+                <!-- menu normal -->
+                <ul class='nav-list'>
+                    <li>
+                        <a href='index.html' class='nav-link'>Home</a>
+                    </li>
+                    <li>
+                        <a href='vacinas.html' class='nav-link'>Vacinas</a>
+                    </li>
+                    <li>
+                        <a href='cadastroVac.html' class='nav-link'>Cadastro para Vacinação</a>
+                    </li>
+                    <li>
+                        <a href='#' class='nav-link'>Retomada da Economia</a>
+                    </li>
+                    <li>
+                        <a href='protocolos.html' class='nav-link'>Protocolos</a>
+                    </li>
+                    <!-- <li>
+                        <a href='fases.html' class='nav-link'>Quem Somos</a>
+                    </li> -->
+                </ul>
+                <!-- search box -->
+                <div class='search-box'>
+                    <button class='btn-search'><i class='fas fa-search'></i></button>
+                    <input type='text' class='input-search' placeholder='Pesquisar...'>
+                </div>
+                <!-- menu hamburguer -->
+                <div class='mobile-menu'>
+                    <div class='line1'></div>
+                    <div class='line2'></div>
+                    <div class='line3'></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id='first-section-fases'>
+            <img id='logo-title' src='img/logo-SP-preto-opaco.svg' alt='São Paulo'>
+            <p id='first-p-fases'>Entenda como funcionam os critérios e as fases da <strong>retomada da economia</strong>.</p>
+        </section>
+        <section id='second-section-fases'>
+            <section id='input-section'>
+                <h1 id='second-h1-fases'>Plano Estadual</h1>
+                <p class='second-p-fases'>A flexibilização das medidas de proteção se dará de forma gradativa de acordo com o <a href='https://www.saopaulo.sp.gov.br/planosp/' target='_blank'>plano estadual de retomada da economia</a>.</p>
+                <p class='second-p-fases'>Para acompanhar em tempo real a situação da sua região, visite
+                    <a href='https://covid.saude.gov.br/' target='_blank'>covid.saude.gov.br</a>
+                </p>
+                <h3 class='second-h3-fases'>
+                    Simulação de Fase Atual da Pandemia
+                </h3>
+                <p></p>
+                <form action='#'>
+                    <fieldset class='simulacao-form'>
+
+                        <label for='leitosUTI'>Digite a quantidade de pacientes com COVID na UTI:</label>
+                        <input type='number' name='leitosUTI' id='leitosUTI'>
+                        <input type='button' value='Calcular Fase' id='submit'>
+                        <p>A taxa de ocupação* de leitos UTI COVID é: <span id='resultado'></span></p>
+                        <p class='entrelinhas' id='calcularNovamente'>*Esta seção do site tem apenas caráter de <strong>SIMULAÇÃO</strong></p>
+                        <p class='entrelinhas'>*Um número base de 15 mil leitos UTI COVID disponíveis foi pré definido.</p>
+                    </fieldset>
+                </form>
+            </section>
+            <div style='overflow-x:auto;'>
+                <table id='table1' cellspacing='0' cellpadding='0'>
+                    <thead id='thead1' class='linha-1'>
+                        <th class='coluna-1 th1'>Critério</th>
+                        <th class='coluna-2 th1'>Indicador</th>
+                        <th class='fase1 th1'>Fase 1<br>Alerta máximo</th>
+                        <th class='fase2 th1'>Fase 2<br>Controle</th>
+                        <th class='fase3 th1'>Fase 3<br>Flexibilização</th>
+                        <th class='fase4 th1'>Fase 4<br>Abertura parcial</th>
+                    </thead>
+                    <tbody>
+                        <tr class='linha-2 linhas'>
+                            <td class='coluna-1 td1' rowspan='2'>Capacidade do Sistema de Saúde<br><br><i class='fas fa-procedures'></i></td>
+                            <td class='coluna-2 td1'>Taxa de ocupação de leitos UTI COVID</td>
+                            <td class='coluna-3 td1'>Acima de 80%</td>
+                            <td class='coluna-4 td1'>Entre 70% e 80%</td>
+                            <td class='coluna-5 td1'>Entre 60% e 70%</td>
+                            <td class='coluna-6 td1'>Abaixo de 60%</td>
+                        </tr>
+                        <tr class='linha-3 linhas'>
+                            <td class='coluna-2 td1'>Leitos UTI COVID / 100k habitantes</td>
+                            <td class='coluna-3 td1'>Abaixo de 0,3</td>
+                            <td class='coluna-4 td1'>Entre 0,3 e 5,0</td>
+                            <td class='coluna-5 td1'>Acima de 5,0</td>
+                            <td class='coluna-6 td1'>Acima de 5,0</td>
+                        </tr>
+                        <tr class='linha-4 linhas'>
+                            <td class='coluna-1 td1' rowspan='3'>Evolução da Epidemia<br><br><i class='fas fa-viruses'></i></td>
+                            <td class='coluna-2 td1'>Nº de novos casos últimos dias / Nº de novas internações 7 dias anteriores</td>
+                            <td class='coluna-3 td1'>Acima de 2,0</td>
+                            <td class='coluna-4 td1'>Entre 1,0 e 2,0</td>
+                            <td class='coluna-5 td1'>Entre 1,0 e 2,0</td>
+                            <td class='coluna-6 td1'>Abaixo de 1,0</td>
+                        </tr>
+                        <tr class='linha-5 linhas'>
+                            <td class='coluna-2 td1'>Nº de novas internações últimos 7 dias / Nº de novas internações 7 dias anteriores</td>
+                            <td class='coluna-3 td1'>Acima de 1,5</td>
+                            <td class='coluna-4 td1'>Entre 1,0 e 1,5</td>
+                            <td class='coluna-5 td1'>Entre 0,5 e 1,0</td>
+                            <td class='coluna-6 td1'>Abaixo de 0,5</td>
+                        </tr>
+                        <tr class='linha-6 linhas'>
+                            <td class='coluna-2 td1'>Nº de óbitos por COVID nos últimos 7 dias / Nº de óbitos por COVID nos 7 dias anteriores</td>
+                            <td class='coluna-3 td1'>Acima de 2,0</td>
+                            <td class='coluna-4 td1'>Entre 1,0 e 2,0</td>
+                            <td class='coluna-5 td1'>Entre 0,5 e 1,0</td>
+                            <td class='coluna-6 td1'>Abaixo de 0,5</td>
+                        </tr>
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+            <div id='SimularNovamente-box'>
+                <button id='botao-simular'><a href='#second-h1-fases'>Simular novamente</a></button>
+            </div>
+        </section>
+        <section>
+
+            <h3 class='third-h3-fases'>Tabela de referência para acompanhamento de abertura dos setores da economia de acordo com a fase de flexibilização. <a href='https://www.saopaulo.sp.gov.br/planosp/' target='_blank'>Saiba mais</a>.</h3>
+            <div style='overflow-x:auto;'>
+                <table id='table2' cellspacing='0' cellpadding='0'>
+                    <thead>
+                        <tr class='tr2'>
+                            <th class='th2 setores-tematicos'>Setores temáticos</th>
+                            <th class='fase1 th2'>Fase 1</th>
+                            <th class='fase2 th2'>Fase 2</th>
+                            <th class='fase3 th2'>Fase 3</th>
+                            <th class='fase4 th2'>Fase 4</th>
+                            <th class='fase5 th2'>Fase 5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Espaços públicos</td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                        </tr>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Atividades imobiliárias</td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='aberto-com-restricoes-orange td2'>Aberto com restrições</td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                        </tr>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Concessionárias</td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='aberto-com-restricoes-orange td2'>Aberto com restrições</td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                        </tr>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Escritórios</td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='aberto-com-restricoes-orange td2'>Aberto com restrições</td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                        </tr>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Bares, restaurantes e similares</td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='aberto-com-restricoes td2'>Aberto com restrições</td>
+                            <td class='aberto-com-restricoes td2'>Aberto com restrições</td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                        </tr>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Comércio</td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='aberto-com-restricoes-orange td2'>Aberto com restrições</td>
+                            <td class='aberto-com-restricoes td2'>Aberto com restrições</td>
+                            <td class='aberto-com-restricoes td2'>Aberto com restrições</td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                        </tr>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Shopping center</td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='aberto-com-restricoes-orange td2'>Aberto com restrições</td>
+                            <td class='aberto-com-restricoes td2'>Aberto com restrições</td>
+                            <td class='aberto-com-restricoes td2'>Aberto com restrições</td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                        </tr>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Salão de beleza</td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='aberto-com-restricoes td2'>Aberto com restrições</td>
+                            <td class='aberto-com-restricoes td2'>Aberto com restrições</td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                        </tr>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Academia</td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='aberto-com-restricoes td2'>Aberto com restrições</td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                        </tr>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Teatro, cinemas</td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                        </tr>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Eventos que geram aglomeração, inclusive esportivos</td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='fechado-x td2'><i class='fas fa-times'></i></td>
+                            <td class='aberto td2'><i class='fas fa-check'></i></td>
+                        </tr>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Educação</td>
+                            <td class='a-ser-definido td2' colspan='5' rowspan='2'>A ser definido</td>
+                        </tr>
+                        <tr class='tr2'>
+                            <td class='coluna-1b td2'>Transporte</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <aside id="acessibilidade">
+        <!-- barra lateral com 3 ícones/botões: A+, A- e Libras -->
+        <div id="aside-tamanhoFonte">
+            <!-- div com botões para aumentar e diminuir tamanho da fonte -->
+            <button class="btn-AlteraTamFonte" id="btn-AumentaLetra">A+</button>
+            <!-- botão para aumentar tamanho da fonte -->
+
+            <button class="btn-AlteraTamFonte" id="btn-DiminuiLetra">A-</button>
+            <!-- botão para diminuir tamanho da fonte -->
+        </div>
+
+        <div vw class="enabled">
+            <!-- div com botão para habilitar Libras -->
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+    </aside>
+
+    <footer>
+        <section>
+            <nav>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="#vacinas-inicio">Vacinas</a></li>
+                    <li><a href="">Ocupação Leitos</a></li>
+                    <li><a href="">Quem Somos</a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <section class="icones-textos">
+            <span>
+                    <a href="https://goo.gl/maps/PjV6FDrgZFZgF8cf7" target="_blank">
+                        <img id="maps" class="logo-redes-sociais" src="img/logo-maps.png" alt="ícone de pin representando Google Maps" title="clique aqui para abrir o Google Maps">
+                    </a>
+                </span>
+            <p>
+                Secretaria de Saúde do Estado de São Paulo<br> Av Dr Enéas Carvalho de Aguiar, 188 - São Paulo<br> CEP: 05403-000<br> Fone(11)3066 8000
+            </p>
+        </section>
+
+        <section>
+            <nav>
+                <ul>
+                    <li class="icones-textos">
+                        <a href="#">
+                            <img class="logo-redes-sociais" src="img/logo-face.png" alt="logo do Facebook" title="ícones feitos por Freepik from www.flaticon.com">
+                        </a>
+                        <a href="#" title="clique aqui para visitar nossa página no Facebook">Facebook</a>
+
+                    </li>
+                    <li class="icones-textos">
+                        <a href="#">
+                            <img class="logo-redes-sociais" src="img/logo-insta.png" alt="logo do Instagram" title="ícones feitos por Freepik from www.flaticon.com">
+                        </a>
+                        <a href="#" title="clique aqui para visitar nosso perfil no Instagram">Instagram</a></li>
+                </ul>
+            </nav>
+        </section>
+    </footer>
+    <script src='./js/index.js'></script>
+    <script src='js/fases.js'></script>
+
+</body>
+
+</html>

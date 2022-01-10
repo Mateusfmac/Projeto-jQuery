@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Protocolos</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- links CSS -->
+    <!-- <link rel="stylesheet" href="css/style-azul.css">        -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;0,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="css/foundation.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
+    <link href="https://kenwheeler.github.io/slick/slick/slick-theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/protocolos.css">
+
+    <!-- links e arquivos JS -->
+    <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script src="https://kit.fontawesome.com/a7d1e099f6.js" crossorigin="anonymous"></script>
+
+    <script>
+        //variável arrayTextos guarda tags que podem conter textos como conteúdo
+        var arrayTextos = ['p', 'a', 'h1', 'h2', 'h3', 'h4', 'input', 'placeholder', 'li', 'figcaption', 'span', 'ul'];
+        var fonteAumentada = 0;
+        var fonteDiminuida = 0;
+        var tamFonte = 0;
+
+        $(document).ready(function() {
+            $('#btn-AumentaLetra').click(function() {
+                for (tag of arrayTextos) {
+                    tamFonte = parseFloat($(tag).css('fontSize'));
+                    if (tamFonte < 19 && tamFonte >= 16) {
+                        fonteAumentada = tamFonte * 1.10;
+                        $(tag).css({
+                            fontSize: fonteAumentada
+                        });
+                    } else if (tamFonte >= 19) {
+                        fonteAumentada = tamFonte * 1.03;
+                        $(tag).css({
+                            fontSize: fonteAumentada
+                        });
+                    } else if (tamFonte < 16) {
+                        fonteAumentada = tamFonte * 1.15;
+                        $(tag).css({
+                            fontSize: fonteAumentada
+                        });
+                    }
+                }
+            });
+
+            $('#btn-DiminuiLetra').click(function() {
+                for (tag of arrayTextos) {
+                    tamFonte = parseFloat($(tag).css('fontSize'));
+                    if (tamFonte < 20 && tamFonte >= 16) {
+                        fonteDiminuida = tamFonte * 0.90;
+                        $(tag).css({
+                            fontSize: fonteDiminuida
+                        });
+                    } else if (tamFonte > 20) {
+                        fonteDiminuida = tamFonte * 0.95;
+                        $(tag).css({
+                            fontSize: fonteDiminuida
+                        });
+                    } else if (tamFonte < 16) {
+                        fonteDiminuida = tamFonte * 1;
+                        $(tag).css({
+                            fontSize: fonteDiminuida
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <header id='pageHeader' class='header-nav-bar'>
+        <div class='container'>
+
+            <nav class='nav'>
+
+                <div>
+                    <a href='index.html' class='logo1'><img src='img/logo-SP-branco.svg' id='imglogo' alt='São Paulo logo'></a>
+                </div>
+
+                <!-- menu normal -->
+                <ul class='nav-list'>
+                    <li>
+                        <a href='index.html' class='nav-link'>Home</a>
+                    </li>
+                    <li>
+                        <a href='vacinas.html' class='nav-link'>Vacinas</a>
+                    </li>
+                    <li>
+                        <a href='cadastroVac.html' class='nav-link'>Cadastro para Vacinação</a>
+                    </li>
+                    <li>
+                        <a href='fases.html' class='nav-link'>Retomada da Economia</a>
+                    </li>
+                    <li>
+                        <a href='#' class='nav-link'>Protocolos</a>
+                    </li>
+                    <!-- <li>
+                        <a href='fases.html' class='nav-link'>Quem Somos</a>
+                    </li> -->
+                </ul>
+                <!-- search box -->
+                <div class='search-box'>
+                    <button class='btn-search'><i class='fas fa-search'></i></button>
+                    <input type='text' class='input-search' placeholder='Pesquisar...'>
+                </div>
+                <!-- menu hamburguer -->
+                <div class='mobile-menu'>
+                    <div class='line1'></div>
+                    <div class='line2'></div>
+                    <div class='line3'></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="title-section">
+            <div class="tith" id="manipula">
+                <h1 class="titulo1-prot">Medidas de Proteção</h1>
+            </div>
+        </div>
+
+        <section class="slide">
+            <div class="row">
+                <!-- fonte de imagens: Site FioCruz -->
+                <div class="column small-11 small-centered">
+                    <h2>Informações gerais</h2>
+                    <div class="slider slider-single">
+                        <div>
+                            <img src="img/atencao_com_as_mascaras_de_tecido_1_0.jpg" title="Como fazer máscaras de tecido" />
+                        </div>
+                        <div>
+                            <img src="img/card_inical.jpg" title="Inicio" />
+                        </div>
+                        <div>
+                            <img src="img/atencao_com_as_mascaras_de_tecido_2_0_0.jpg" title="Cuidados com as máscaras de tecido" />
+                        </div>
+
+                        <div>
+                            <img src="img/atencao_com_limpeza_da_casa_e_dos_objetos_0.jpg" title="Limpeza da casa e objetos" />
+                        </div>
+                        <!-- <div>
+                                <img src="img/atencao_com_limpeza_de_superficies_e_objetos_0.jpg" title="Limpeza da casa e objetos" />
+                            </div> -->
+                        <!-- <div><img src="img/atencao_com_o_alcool_em_gel_0.jpg" title="Álcool gel " /></div>
+                            <div><img src="img/whatsapp_image_2021-05-19_at_17.37.21.jpeg" title="Cuidados no descarte de máscaras e luvas " /></div>
+                            <div><img src="img/atencao_ao_tempo_de_sobrevida_do_novo_coronavirus.jpg" title="Tempo de resistência do coronavírus em diferentes superfícies" /></div>
+                            <div><img src="img/uso_de_mascaras_como_utilizar_mascara_caseira.jpg" title="Como utilizar máscaras corretamente " /></div>
+                            <div><img src="img/uso_de_mascaras_para_protecao_coletiva_0.jpg" title="Máscara para proteção coletiva " /></div>
+                            <div><img src="img/lavagem_correta_das_maos_quadrado_2.jpg" title="Como fazer a higiene das mãos " /></div> -->
+                    </div>
+                    <div class="slider slider-nav">
+                        <div>
+                            <img src="img/atencao_com_as_mascaras_de_tecido_1_0.jpg" title="Como fazer máscaras de tecido" />
+                        </div>
+                        <div>
+                            <img src="img/card_inical.jpg" title="Inicio" />
+                        </div>
+                        <div>
+                            <img src="img/atencao_com_as_mascaras_de_tecido_2_0_0.jpg" title="Cuidados com as máscaras de tecido" />
+                        </div>
+
+                        <div>
+                            <img src="img/atencao_com_limpeza_da_casa_e_dos_objetos_0.jpg" title="Limpeza da casa e objetos" />
+                        </div>
+                        <!-- <div>
+                                <img src="img/atencao_com_limpeza_de_superficies_e_objetos_0.jpg" title="Limpeza da casa e objetos" />
+                            </div> -->
+                        <!-- <div><img src="img/atencao_com_o_alcool_em_gel_0.jpg" title="Álcool gel " /></div> -->
+                        <!-- <div><img src="img/whatsapp_image_2021-05-19_at_17.37.21.jpeg" title="Cuidados no descarte de máscaras e luvas " /></div>
+                            <div><img src="img/atencao_ao_tempo_de_sobrevida_do_novo_coronavirus.jpg" title="Tempo de resistência do coronavírus em diferentes superfícies" /></div>
+                            <div><img src="img/uso_de_mascaras_como_utilizar_mascara_caseira.jpg" title="Como utilizar máscaras corretamente " /></div>
+                            <div><img src="img/uso_de_mascaras_para_protecao_coletiva_0.jpg" title="Máscara para proteção coletiva " /></div>
+                            <div><img src="img/lavagem_correta_das_maos_quadrado_2.jpg" title="Como fazer a higiene das mãos " /></div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="column small-11 small-centered">
+                    <h2>Informações científicas</h2>
+                    <div class="slider slider-single">
+
+                        <div><img typeof="foaf:Image" src="img/_card16.jpg" title="Chegando do mercado" /></div>
+                        <div><img typeof="foaf:Image" src="img/infografico_covid19_11.jpeg" title="Chegando do mercado" /></div>
+                        <div><img typeof="foaf:Image" src="img/_card17.jpg" title="Limpando as compras" /></div>
+                        <div><img typeof="foaf:Image" src="img/_card18.png" title="Lave as mãos" /></div>
+                        <!-- <div><img typeof="foaf:Image" src="img/_card20.jpg" title="Distanciamento social" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_8.jpeg" title="Transmissão" /></div>
+                            <div><img typeof="foaf:Image" src="img/whatsapp_image_2020-05-07_at_12.43.18.jpeg" title="Distanciamento social" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_7.jpeg" title="Impacto no organismo" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_6.jpeg" title="Impacto no organismo" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_4.png" title="Como o coronavírus ataca as células" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_5.jpeg" title="Proteção contra o vírus" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_4.jpeg" title="Máscaras caseiras" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_3.jpeg" title="Gripe, resfriado ou covid-19?" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_3.png" title="Objetos do cotidiano" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_2.png" title="Locais com maior risco de transmissão" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_13.jpeg" title="Produção da vacina" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_13.png" title="Imunidade de rebanho" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_12.png" title="Crescimento dos casos no interior" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_11.png" title="Use máscara" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_10.png" title="Trabalho remoto" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_1.jpg" title="Profissionais de saúde" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_1.png" title="Não é hora de relaxar" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_2.jpeg" title="Pets e pandemia" /></div>
+                            <div><img typeof="foaf:Image" src="img/11_exames-de-covid_s.png" title="Exames de diagnóstico para Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/13_volta-as-aulas-presenciais.png" title="Riscos da volta às aulas" /></div>
+                            <div><img typeof="foaf:Image" src="img/17_atividades-f1sicas-em-tempos-de-covid.png" title="Exercícios em tempos de Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/25_sequelas-scaled_0.jpg" title="Possíveis sequelas da Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/26_transporte-publico-scaled_0.jpg" title="Infecção no transporte público" /></div>
+                            <div><img typeof="foaf:Image" src="img/25_5-milhoes_1.png" title="Número de casos no Brasil" /></div>
+                            <div><img typeof="foaf:Image" src="img/28_cenario-da-covid-19-no-brasil-1_0.png" title="Cenário da Covid-19 no Brasil" /></div>
+                            <div><img typeof="foaf:Image" src="img/29_viagens-aereas-1_0.png" title="Risco de infecção em viagens aáreas" /></div>
+                            <div><img typeof="foaf:Image" src="img/31_sintomas_00.png" title="Quantidade de pessoas sintomáticas e assintomáticas" /></div>
+                            <div><img typeof="foaf:Image" src="img/32_ambientes_0.png" title="Risco de infecção pelo vírus" /></div>
+                            <div><img typeof="foaf:Image" src="img/mascara-ilustra.png" title="Modo certo de utilizar a máscara" /></div>
+                            <div><img typeof="foaf:Image" src="img/34_a-covid-ou-o-covid_0.png" title="O Covid ou A Covid?" /></div>
+                            <div><img typeof="foaf:Image" src="img/36_eleicoes_1.png" title="Precauções na hora de votar" /></div>
+                            <div><img typeof="foaf:Image" src="img/criancas-na-pandemia-scaled_0.jpg" title="A rotina das crianças durante a pandemia" /></div>
+                            <div><img typeof="foaf:Image" src="img/38_02_vacina-contra-a-covid-19-scaled.jpg" title="Vacinas: aonde estamos? (parte 1)" /></div>
+                            <div><img typeof="foaf:Image" src="img/38_01_vacina-contra-a-covid-19_2-scaled.jpg" title="Vacinas: aonde estamos? (parte 2)" /></div>
+                            <div><img typeof="foaf:Image" src="img/41_janela-de-fim-de-ano_v2-scaled.jpg" title="Festas de fim de ano" /></div>
+                            <div><img typeof="foaf:Image" src="img/42_cuidados-no-convivio-scaled_0.jpg" title="Cuidados em casa" /></div>
+                            <div><img typeof="foaf:Image" src="img/37_numeros-da-covid.png" title="Quantidade de mortes da pandemia" /></div>
+                            <div><img typeof="foaf:Image" src="img/39_face-shield_0.jpg" title="Uso correto de protetor facial" /></div>
+                            <div><img typeof="foaf:Image" src="img/43_camadas-de-protecao-contra-covid_0.png" title="Camadas de proteção contra a Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/media-movel.png" title="O que é média móvel?" /></div>
+                            <div><img typeof="foaf:Image" src="img/45_o-que-e-pni_0.png" title="O que é o pni?" /></div>
+                            <div><img typeof="foaf:Image" src="img/47_alerta_02.png" title="Alerta Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/48_variantes-covid19_final.png" title="Variantes do coronavírus" /></div>
+                            <div><img typeof="foaf:Image" src="img/49_vacinacao-america-latina_02.png" title="Vacinação na AL" /></div>
+                            <div><img typeof="foaf:Image" src="img/50_covid-prolongada.png" title=" " /></div>
+                            <div><img typeof="foaf:Image" src="img/52_alerta-leitos-uticdr.png" title="Alerta de ocupação de leitos" /></div>
+                            <div><img typeof="foaf:Image" src="img/53_como-interromper-a-transmissao-do-sars-cov-2.png" title="Como interromper a transmissão da Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/54_alerta-vermelho-1.png" title="Alerta de ocupação de leitos de UTI" /></div>
+                            <div><img typeof="foaf:Image" src="img/55_como-se-manter-ativo-durante-o-isolamento-social.png" title="Como se manter ativo durante o isolamento social" /></div>
+                            <div><img typeof="foaf:Image" src="img/56_posso-amamentar.png" title="Covid-19 e amamentação" /></div>
+                            <div><img typeof="foaf:Image" src="img/57_qual-mascara-facial-protege-mais.png" title="Qual máscara protege mais?" /></div>
+                            <div><img typeof="foaf:Image" src="img/186496693_303226658006625_3964922966514010491_n.jpg" title="Comorbidades e a Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/184616702_298626165133341_932572172427711054_n.jpg" title="Orientações para quem já tomou a vacina?" /></div>
+                            <div><img typeof="foaf:Image" src="img/182609629_295665112096113_5324580400652269287_n.jpg" title="Como as máscaras N95 e PFF2 funcionam?" /></div>
+                            <div><img typeof="foaf:Image" src="img/177809678_290094895986468_4712112973300178226_n.jpg" title="Consumo de alimentos na pandemia" /></div>
+                            <div><img typeof="foaf:Image" src="img/175892263_285729376423020_797840021543138216_n.jpg" title="Covid-19 no Brasil" /></div>
+                            <div><img typeof="foaf:Image" src="img/172434358_281583523504272_6218429845312462040_n.jpg" title="Variantes em circulação no Brasil" /></div> -->
+                    </div>
+                    <div class="slider slider-nav">
+                        <div><img typeof="foaf:Image" src="img/_card16.jpg" title="Chegando do mercado " /></div>
+                        <div><img typeof="foaf:Image" src="img/infografico_covid19_11.jpeg" title="Chegando do mercado " /></div>
+                        <div><img typeof="foaf:Image" src="img/_card17.jpg" title="Limpando as compras" /></div>
+                        <div><img typeof="foaf:Image" src="img/_card18.png" title="Lave as mãos " /></div>
+                        <!-- <div><img typeof="foaf:Image" src="img/_card20.jpg" title="Distanciamento social" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_8.jpeg" title="Transmissão" /></div>
+                            <div><img typeof="foaf:Image" src="img/whatsapp_image_2020-05-07_at_12.43.18.jpeg" title="Distanciamento social" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_7.jpeg" title="Impacto no organismo" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_6.jpeg" title="Impacto no organismo" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_4.png" title="Como o coronavírus ataca as células" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_5.jpeg" title="Proteção contra o vírus" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_4.jpeg" title="Máscaras caseiras" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_3.jpeg" title="Gripe, resfriado ou covid-19?" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_3.png" title="Objetos do cotidiano" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_2.png" title="Locais com maior risco de transmissão" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_13.jpeg" title="Produção da vacina" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_13.png" title="Imunidade de rebanho" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_12.png" title="Crescimento dos casos no interior" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_11.png" title="Use máscara" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_10.png" title="Trabalho remoto" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_1.jpg" title="Profissionais de saúde" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_1.png" title="Não é hora de relaxar" /></div>
+                            <div><img typeof="foaf:Image" src="img/infografico_covid19_2.jpeg" title="Pets e pandemia" /></div>
+                            <div><img typeof="foaf:Image" src="img/11_exames-de-covid_s.png" title="Exames de diagnóstico para Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/13_volta-as-aulas-presenciais.png" title="Riscos da volta às aulas" /></div>
+                            <div><img typeof="foaf:Image" src="img/17_atividades-f1sicas-em-tempos-de-covid.png" title="Exercícios em tempos de Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/25_sequelas-scaled_0.jpg" title="Possíveis sequelas da Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/26_transporte-publico-scaled_0.jpg" title="Infecção no transporte público" /></div>
+                            <div><img typeof="foaf:Image" src="img/25_5-milhoes_1.png" title="Número de casos no Brasil" /></div>
+                            <div><img typeof="foaf:Image" src="img/28_cenario-da-covid-19-no-brasil-1_0.png" title="Cenário da Covid-19 no Brasil" /></div>
+                            <div><img typeof="foaf:Image" src="img/29_viagens-aereas-1_0.png" title="Risco de infecção em viagens aáreas" /></div>
+                            <div><img typeof="foaf:Image" src="img/31_sintomas_00.png" title="Quantidade de pessoas sintomáticas e assintomáticas" /></div>
+                            <div><img typeof="foaf:Image" src="img/32_ambientes_0.png" title="Risco de infecção pelo vírus" /></div>
+                            <div><img typeof="foaf:Image" src="img/mascara-ilustra.png" title="Modo certo de utilizar a máscara" /></div>
+                            <div><img typeof="foaf:Image" src="img/34_a-covid-ou-o-covid_0.png" title="O Covid ou A Covid?" /></div>
+                            <div><img typeof="foaf:Image" src="img/36_eleicoes_1.png" title="Precauções na hora de votar" /></div>
+                            <div><img typeof="foaf:Image" src="img/criancas-na-pandemia-scaled_0.jpg" title="A rotina das crianças durante a pandemia" /></div>
+                            <div><img typeof="foaf:Image" src="img/38_02_vacina-contra-a-covid-19-scaled.jpg" title="Vacinas: aonde estamos? (parte 1)" /></div>
+                            <div><img typeof="foaf:Image" src="img/38_01_vacina-contra-a-covid-19_2-scaled.jpg" title="Vacinas: aonde estamos? (parte 2)" /></div>
+                            <div><img typeof="foaf:Image" src="img/41_janela-de-fim-de-ano_v2-scaled.jpg" title="Festas de fim de ano" /></div>
+                            <div><img typeof="foaf:Image" src="img/42_cuidados-no-convivio-scaled_0.jpg" title="Cuidados em casa" /></div>
+                            <div><img typeof="foaf:Image" src="img/37_numeros-da-covid.png" title="Quantidade de mortes da pandemia" /></div>
+                            <div><img typeof="foaf:Image" src="img/39_face-shield_0.jpg" title="Uso correto de protetor facial" /></div>
+                            <div><img typeof="foaf:Image" src="img/43_camadas-de-protecao-contra-covid_0.png" title="Camadas de proteção contra a Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/media-movel.png" title="O que é média móvel?" /></div>
+                            <div><img typeof="foaf:Image" src="img/45_o-que-e-pni_0.png" title="O que é o pni?" /></div>
+                            <div><img typeof="foaf:Image" src="img/47_alerta_02.png" title="Alerta Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/48_variantes-covid19_final.png" title="Variantes do coronavírus" /></div>
+                            <div><img typeof="foaf:Image" src="img/49_vacinacao-america-latina_02.png" title="Vacinação na AL" /></div>
+                            <div><img typeof="foaf:Image" src="img/50_covid-prolongada.png" title=" " /></div>
+                            <div><img typeof="foaf:Image" src="img/52_alerta-leitos-uticdr.png" title="Alerta de ocupação de leitos" /></div>
+                            <div><img typeof="foaf:Image" src="img/53_como-interromper-a-transmissao-do-sars-cov-2.png" title="Como interromper a transmissão da Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/54_alerta-vermelho-1.png" title="Alerta de ocupação de leitos de UTI" /></div>
+                            <div><img typeof="foaf:Image" src="img/55_como-se-manter-ativo-durante-o-isolamento-social.png" title="Como se manter ativo durante o isolamento social" /></div>
+                            <div><img typeof="foaf:Image" src="img/56_posso-amamentar.png" title="Covid-19 e amamentação" /></div>
+                            <div><img typeof="foaf:Image" src="img/57_qual-mascara-facial-protege-mais.png" title="Qual máscara protege mais?" /></div>
+                            <div><img typeof="foaf:Image" src="img/186496693_303226658006625_3964922966514010491_n.jpg" title="Comorbidades e a Covid-19" /></div>
+                            <div><img typeof="foaf:Image" src="img/184616702_298626165133341_932572172427711054_n.jpg" title="Orientações para quem já tomou a vacina?" /></div>
+                            <div><img typeof="foaf:Image" src="img/182609629_295665112096113_5324580400652269287_n.jpg" title="Como as máscaras N95 e PFF2 funcionam?" /></div>
+                            <div><img typeof="foaf:Image" src="img/177809678_290094895986468_4712112973300178226_n.jpg" title="Consumo de alimentos na pandemia" /></div>
+                            <div><img typeof="foaf:Image" src="img/175892263_285729376423020_797840021543138216_n.jpg" title="Covid-19 no Brasil" /></div>
+                            <div><img typeof="foaf:Image" src="img/172434358_281583523504272_6218429845312462040_n.jpg" title="Variantes em circulação no Brasil" /></div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="row">
+                <div class="column small-11 small-centered">
+                    <h2>Informativos sobre isolamento domiciliar</h2>
+                    <div class="slider slider-single">
+                        <div>
+                            <img typeof="foaf:Image" src="img/lidando_com_o_estresse_durante_a_pandemia_quadrado.jpg" title="Como lidar com o estresse na quarentena" />
+                        </div>
+                        <div>
+                            <img typeof="foaf:Image" src="img/fiobrasilia6.jpg" title="Entre em contato com amigos e família" />
+                        </div>
+                        <div>
+                            <img typeof="foaf:Image" src="img/fiobrasilia5.jpg" title="Bebidas e drogas" />
+                        </div>
+                        <div>
+                            <img typeof="foaf:Image" src="img/fiobrasilia4.jpg" title="Consumo de notícias" />
+                        </div>
+                        <!-- <div> <img typeof="foaf:Image" src="img/fiobrasilia3.jpg" title="Alimentação saudável" /></div>
+                            <div> <img typeof="foaf:Image" src="img/fiobrasilia2.jpg" title="Busque  informações de confiança" /></div>
+                            <div> <img typeof="foaf:Image" src="img/fiobrasilia1.jpg" title="Procure atividades relaxantes e prazerosas" /></div>
+                            <div> <img typeof="foaf:Image" src="img/web_corona_saude_mental_0.jpg" title="Dicas gerais sobre saúde mental para trabalhadores e gestores" /></div>
+                            <div> <img typeof="foaf:Image" src="img/web_corona_saude_mental2_0.jpg" title="Dicas gerais sobre saúde mental" /></div> -->
+                    </div>
+                    <div class="slider slider-nav">
+                        <div>
+                            <img typeof="foaf:Image" src="img/lidando_com_o_estresse_durante_a_pandemia_quadrado.jpg" title="Como lidar com o estresse na quarentena" />
+                        </div>
+                        <div>
+                            <img typeof="foaf:Image" src="img/fiobrasilia6.jpg" title="Entre em contato com amigos e família" />
+                        </div>
+                        <div>
+                            <img typeof="foaf:Image" src="img/fiobrasilia5.jpg" title="Bebidas e drogas" />
+                        </div>
+                        <div>
+                            <img typeof="foaf:Image" src="img/fiobrasilia4.jpg" title="Consumo de notícias" />
+                        </div>
+                        <!-- <div> <img typeof="foaf:Image" src="img/fiobrasilia3.jpg" title="Alimentação saudável" /></div>
+                            <div> <img typeof="foaf:Image" src="img/fiobrasilia2.jpg" title="Busque  informações de confiança" /></div>
+                            <div> <img typeof="foaf:Image" src="img/fiobrasilia1.jpg" title="Procure atividades relaxantes e prazerosas" /></div>
+                            <div> <img typeof="foaf:Image" src="img/web_corona_saude_mental_0.jpg" title="Dicas gerais sobre saúde mental para trabalhadores e gestores" /></div>
+                            <div> <img typeof="foaf:Image" src="img/web_corona_saude_mental2_0.jpg" title="Dicas gerais sobre saúde mental" /></div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="column small-11 small-centered">
+                    <h2>Informativos com recomendações específicas</h2>
+                    <div class="slider slider-single">
+                        <div> <img typeof="foaf:Image" src="img/whatsapp_image_2020-03-20_at_14.52.31_1_1.jpeg" title="Cuidados com seu pet" /></div>
+                        <div> <img typeof="foaf:Image" src="img/_card12.jpg" title="Covid-19 e amamentação" /></div>
+                        <div> <img typeof="foaf:Image" src="img/criancas_web2_1.jpeg" title="Crianças com microcefalia e condições crônicas" /></div>
+                        <div> <img typeof="foaf:Image" src="img/_card14.jpg" title="Gestantes e Covid-19" /></div>
+                        <!-- <div> <img typeof="foaf:Image" src="img/web_corona_vc_sabia2_0.jpg" title="Gestantes e amamentação" /></div>
+                            <div> <img typeof="foaf:Image" src="img/_card15.jpg" title="Doação de sangue na pandemia" /></div> -->
+                    </div>
+                    <div class="slider slider-nav">
+                        <div> <img typeof="foaf:Image" src="img/whatsapp_image_2020-03-20_at_14.52.31_1_1.jpeg" title="Cuidados com seu pet" /></div>
+                        <div> <img typeof="foaf:Image" src="img/_card12.jpg" title="Covid-19 e amamentação" /></div>
+                        <div> <img typeof="foaf:Image" src="img/criancas_web2_1.jpeg" title="Crianças com microcefalia e condições crônicas" /></div>
+                        <div> <img typeof="foaf:Image" src="img/_card14.jpg" title="Gestantes e Covid-19" /></div>
+                        <!-- <div> <img typeof="foaf:Image" src="img/web_corona_vc_sabia2_0.jpg" title="Gestantes e amamentação" /></div>
+                            <div> <img typeof="foaf:Image" src="img/_card15.jpg" title="Doação de sangue na pandemia" /></div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="row">
+                <div class="column small-11 small-centered">
+                    <h2>Rotina no isolamento domiciliar</h2>
+                    <div class="slider slider-single">
+                        <div><img typeof="foaf:Image" src="img/planejamento_00.jpeg" title="Capa: como planejar a aquisição de alimentos" /></div>
+                        <div><img typeof="foaf:Image" src="img/planejamento_01_0.jpeg" title="Verifique os alimentos que já tem em casa" /></div>
+                        <div><img typeof="foaf:Image" src="img/planejamento_02.jpeg" title="Cheuqe a capacidade da dispensa" /></div>
+                        <div><img typeof="foaf:Image" src="img/planejamento_03.jpeg" title="Inclua alimentos saudáveis" /></div>
+                        <!-- <div><img typeof="foaf:Image" src="img/planejamento_04.jpeg" title="Pense na durabilidade dos alimentos" /></div>
+                            <div><img typeof="foaf:Image" src="img/planejamento_05.jpeg" title="Faça uma lista de compras" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_00.jpeg" title="Como manter uma alimentação saudável no isolamento?" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_01.jpeg" title="Prefira sempre comida de verdade" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_02.jpeg" title="Reduza a quantidade de ingredientes" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_03.jpeg" title="Atenção às práticas de higiene" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_04.jpeg" title="Evite os ultraprocessados" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_05.jpeg" title="Coma regularmente e com atenção" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_06.jpeg" title="Desenvolva suas habilidades culináriuas" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_07.jpeg" title="Planeje bem o seu tempo" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_08.jpeg" title="Beba água com regularidade" /></div>
+                            <div><img typeof="foaf:Image" src="img/nota_saudavel_exercicio_1.jpeg" title="Como se manter ativo durante a quarentena?" /></div>
+                            <div><img typeof="foaf:Image" src="img/nota_saudavel_exercicio_2.jpeg" title="Evite treinos muito intensos" /></div>
+                            <div><img typeof="foaf:Image" src="img/nota_saudavel_exercicio_3.jpeg" title="Nada de invenções" /></div>
+                            <div><img typeof="foaf:Image" src="img/nota_saudavel_exercicio_4.jpeg" title="A preparação é fundamental" /></div>
+                            <div><img typeof="foaf:Image" src="img/nota_saudavel_exercicio_5.jpeg" title="Crie uma rotina" /></div>
+                            <div><img typeof="foaf:Image" src="img/nota_saudavel_exercicio_7_0.jpeg" title="Peça ajuda!" /></div>
+                            <div><img typeof="foaf:Image" src="img/web_corona_crianca_isolamento_partei_0_0.jpg" title="Instruções para pacientes e familiares na quarentena" /></div>
+                            <div><img typeof="foaf:Image" src="img/web_corona_crianca_isolamento_parteii_0.jpg" title="Informações para pacientes e familiares na quarentena" /></div> -->
+                    </div>
+                    <div class="slider slider-nav">
+                        <div><img typeof="foaf:Image" src="img/planejamento_00.jpeg" title="Capa: como planejar a aquisição de alimentos" /></div>
+                        <div><img typeof="foaf:Image" src="img/planejamento_01_0.jpeg" title="Verifique os alimentos que já tem em casa" /></div>
+                        <div><img typeof="foaf:Image" src="img/planejamento_02.jpeg" title="Cheuqe a capacidade da dispensa" /></div>
+                        <div><img typeof="foaf:Image" src="img/planejamento_03.jpeg" title="Inclua alimentos saudáveis" /></div>
+                        <div><img typeof="foaf:Image" src="img/planejamento_04.jpeg" title="Pense na durabilidade dos alimentos" /></div>
+                        <!-- <div><img typeof="foaf:Image" src="img/planejamento_05.jpeg" title="Faça uma lista de compras" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_00.jpeg" title="Como manter uma alimentação saudável no isolamento?" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_01.jpeg" title="Prefira sempre comida de verdade" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_02.jpeg" title="Reduza a quantidade de ingredientes" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_03.jpeg" title="Atenção às práticas de higiene" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_04.jpeg" title="Evite os ultraprocessados" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_05.jpeg" title="Coma regularmente e com atenção" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_06.jpeg" title="Desenvolva suas habilidades culináriuas" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_07.jpeg" title="Planeje bem o seu tempo" /></div>
+                            <div><img typeof="foaf:Image" src="img/alimentacao_08.jpeg" title="Beba água com regularidade" /></div>
+                            <div><img typeof="foaf:Image" src="img/nota_saudavel_exercicio_1.jpeg" title="Como se manter ativo durante a quarentena?" /></div>
+                            <div><img typeof="foaf:Image" src="img/nota_saudavel_exercicio_2.jpeg" title="Evite treinos muito intensos" /></div>
+                            <div><img typeof="foaf:Image" src="img/nota_saudavel_exercicio_3.jpeg" title="Nada de invenções" /></div>
+                            <div><img typeof="foaf:Image" src="img/nota_saudavel_exercicio_4.jpeg" title="A preparação é fundamental" /></div>
+                            <div><img typeof="foaf:Image" src="img/nota_saudavel_exercicio_5.jpeg" title="Crie uma rotina" /></div>
+                            <div><img typeof="foaf:Image" src="img/nota_saudavel_exercicio_7_0.jpeg" title="Peça ajuda!" /></div>
+                            <div><img typeof="foaf:Image" src="img/web_corona_crianca_isolamento_partei_0_0.jpg" title="Instruções para pacientes e familiares na quarentena" /></div>
+                            <div><img typeof="foaf:Image" src="img/web_corona_crianca_isolamento_parteii_0.jpg" title="Informações para pacientes e familiares na quarentena" /></div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <aside id="acessibilidade">
+        <!-- barra lateral com 3 ícones/botões: A+, A- e Libras -->
+        <div id="aside-tamanhoFonte">
+            <!-- div com botões para aumentar e diminuir tamanho da fonte -->
+            <button class="btn-AlteraTamFonte" id="btn-AumentaLetra">A+</button>
+            <!-- botão para aumentar tamanho da fonte -->
+
+            <button class="btn-AlteraTamFonte" id="btn-DiminuiLetra">A-</button>
+            <!-- botão para diminuir tamanho da fonte -->
+        </div>
+
+        <div vw class="enabled">
+            <!-- div com botão para habilitar Libras -->
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+    </aside>
+
+    <footer>
+        <section>
+            <section>
+                <nav>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="#vacinas-inicio">Vacinas</a></li>
+                        <li><a href="">Ocupação Leitos</a></li>
+                        <li><a href="">Quem Somos</a></li>
+                    </ul>
+                </nav>
+            </section>
+
+            <section class="icones-textos">
+                <span>
+                        <a href="https://goo.gl/maps/PjV6FDrgZFZgF8cf7" target="_blank">
+                            <img id="maps" class="logo-redes-sociais" src="img/logo-maps.png" alt="ícone de pin representando Google Maps" title="clique aqui para abrir o Google Maps">
+                        </a>
+                    </span>
+                <p id="endereco">
+                    Secretaria de Saúde do Estado de São Paulo<br> Av Dr Enéas Carvalho de Aguiar, 188 - São Paulo<br> CEP: 05403-000<br> Fone(11)3066 8000
+                </p>
+            </section>
+
+            <section>
+                <nav>
+                    <ul>
+                        <li class="icones-textos">
+                            <a href="#">
+                                <img class="logo-redes-sociais" src="img/logo-face.png" alt="logo do Facebook" title="ícones feitos por Freepik from www.flaticon.com">
+                            </a>
+                            <a href="#" title="clique aqui para visitar nossa página no Facebook">Facebook</a>
+
+                        </li>
+                        <li class="icones-textos">
+                            <a href="#">
+                                <img class="logo-redes-sociais" src="img/logo-insta.png" alt="logo do Instagram" title="ícones feitos por Freepik from www.flaticon.com">
+                            </a>
+                            <a href="#" title="clique aqui para visitar nosso perfil no Instagram">Instagram</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </section>
+
+
+    </footer>
+
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <script id="ga-injection">
+        var n = new Date();
+        var y = n.getFullYear();
+        var m = n.getMonth() + 1;
+        var d = n.getDate();
+        var vhora = n.getHours();
+        var vminuto = n.getMinutes();
+        document.getElementById("date").innerHTML = d + "/" + m + "/" + y + "   " + "Hora:" + " " + vhora + ":" + vminuto + " (Horário de Brasília)";
+    </script>
+    <script>
+        $(document).on('ready', function() {
+            $('.slider-single').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                fade: false,
+                adaptiveHeight: true,
+                infinite: false,
+                useTransform: true,
+                speed: 200,
+                cssEase: 'cubic-bezier(0.77, 0, 0.18, 1)',
+            });
+
+            $('.slider-nav')
+                .on('init', function(event, slick) {
+                    $('.slider-nav .slick-slide.slick-current').addClass('is-active');
+                })
+                .slick({
+                    slidesToShow: 6,
+                    slidesToScroll: 6,
+                    dots: false,
+                    focusOnSelect: false,
+                    infinite: false,
+                    responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 5,
+                            slidesToScroll: 5,
+                        }
+                    }, {
+                        breakpoint: 640,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 4,
+                        }
+                    }, {
+                        breakpoint: 420,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                        }
+                    }]
+                });
+
+            $('.slider-single').on('afterChange', function(event, slick, currentSlide) {
+                $('.slider-nav').slick('slickGoTo', currentSlide);
+                var currrentNavSlideElem = '.slider-nav .slick-slide[data-slick-index="' + currentSlide + '"]';
+                $('.slider-nav .slick-slide.is-active').removeClass('is-active');
+                $(currrentNavSlideElem).addClass('is-active');
+            });
+
+            $('.slider-nav').on('click', '.slick-slide', function(event) {
+                event.preventDefault();
+                var goToSingleSlide = $(this).data('slick-index');
+
+                $('.slider-single').slick('slickGoTo', goToSingleSlide);
+            });
+        });
+    </script>
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>
